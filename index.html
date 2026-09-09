@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão - João Vítor Silvagica Pro - Plataforma de Estudos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        
+        .custom-watermark {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            font-size: 6vw;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #38bdf8;
+            transform: rotate(-30deg);
+            white-space: nowrap;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 flex flex-col selection:bg-teal-500 selection:text-white relative overflow-x-hidden">
+
+    <div class="custom-watermark">Revisão - João Vítor Silvagica Pro</div>
+
+    <header class="glass-panel sticky top-0 z-40 px-6 py-4 flex flex-wrap justify-between items-center shadow-2xl border-b border-slate-800">
+        <div class="flex items-center space-x-3">
+            <div class="bg-gradient-to-br from-teal-400 to-cyan-500 p-3 rounded-2xl text-slate-950 shadow-lg shadow-teal-500/20">
+                <i class="fa-solid fa-scalpel text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-teal-300 via-cyan-200 to-indigo-300 bg-clip-text text-transparent">Revisão - João Vítor Silvagica Pro</h1>
+                <p class="text-xs font-semibold text-slate-400">Plataforma Completa de Estudos</p>
+            </div>
+        </div>
+        <nav class="flex space-x-2 mt-3 sm:mt-0 overflow-x-auto pb-1 sm:pb-0">
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all bg-teal-500 text-slate-950 shadow-lg shadow-teal-500/25 flex items-center space-x-2">
+                <i class="fa-solid fa-house"></i><span>Início & Progresso</span>
+            </button>
+            <button onclick="switchTab('material')" id="nav-material" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center space-x-2">
+                <i class="fa-solid fa-book-open"></i><span>Teoria Completa (PDFs)</span>
+            </button>
+            <button onclick="switchTab('instruments')" id="nav-instruments" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center space-x-2">
+                <i class="fa-solid fa-toolbox"></i><span>29 Instrumentais</span>
+            </button>
+            <button onclick="switchTab('flashcards')" id="nav-flashcards" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center space-x-2">
+                <i class="fa-solid fa-clone"></i><span>Flashcards Teoria</span>
+            </button>
+            <button onclick="switchTab('instrument-flashcards')" id="nav-instrument-flashcards" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center space-x-2">
+                <i class="fa-solid fa-scissors"></i><span>Flashcards Instrumentais</span>
+            </button>
+            <button onclick="switchTab('quiz')" id="nav-quiz" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:bg-slate-800 hover:text-white flex items-center space-x-2">
+                <i class="fa-solid fa-gamepad"></i><span>Modo Jogo</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-6 relative z-10">
+
+        <!-- Tab Dashboard -->
+        <div id="tab-dashboard" class="tab-content space-y-8">
+            <div class="relative overflow-hidden bg-gradient-to-r from-teal-950/70 via-slate-900 to-indigo-950/70 p-8 sm:p-10 rounded-3xl border border-teal-500/30 shadow-2xl">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-teal-400 text-9xl pointer-events-none">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="max-w-2xl relative z-10">
+                    <span class="bg-teal-500/15 text-teal-300 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-teal-500/30">Painel de Desempenho Oficial</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 text-white tracking-tight">Acompanhe Seu Progresso para a Prova</h2>
+                    <p class="text-slate-300 mt-3 text-sm sm:text-base leading-relaxed">
+                        Monitore sua evolução nos estudos teóricos dos PDFs, domínio dos 29 instrumentais cirúrgicos e pontuação nos simulados e flashcards.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <button onclick="switchTab('instruments')" class="px-6 py-3.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-2xl shadow-xl shadow-teal-500/25 transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-toolbox"></i><span>Ver Instrumentais</span>
+                        </button>
+                        <button onclick="switchTab('instrument-flashcards')" class="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold rounded-2xl transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-scissors text-teal-400"></i><span>Treinar Flashcards de Instrumentos</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-3xl flex items-center space-x-5 shadow-lg border border-slate-800">
+                    <div class="bg-teal-500/10 text-teal-400 p-4 rounded-2xl text-2xl border border-teal-500/20">
+                        <i class="fa-solid fa-scissors"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-white" id="stat-instruments-count">29</div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Instrumentais Cadastrados</div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-3xl flex items-center space-x-5 shadow-lg border border-slate-800">
+                    <div class="bg-indigo-500/10 text-indigo-400 p-4 rounded-2xl text-2xl border border-indigo-500/20">
+                        <i class="fa-solid fa-file-shield"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-white">2 Módulos</div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Teoria Completa (PDFs)</div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-3xl flex items-center space-x-5 shadow-lg border border-slate-800">
+                    <div class="bg-purple-500/10 text-purple-400 p-4 rounded-2xl text-2xl border border-purple-500/20">
+                        <i class="fa-solid fa-clone"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-white" id="stat-flashcards-count">29</div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Flashcards de Instrumentos</div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-3xl flex items-center space-x-5 shadow-lg border border-slate-800">
+                    <div class="bg-amber-500/10 text-amber-400 p-4 rounded-2xl text-2xl border border-amber-500/20">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-white" id="stat-score">0 pts</div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Pontuação de Estudo</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Progress -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl">
+                    <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-chart-pie text-teal-400"></i><span>Módulos de Teoria (PDFs)</span>
+                    </h3>
+                    <p class="text-xs text-slate-400">Acompanhamento dos módulos de Tempos Operatórios e Preparo Pré-operatório.</p>
+                    <div class="space-y-3 pt-2">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-300 mb-1">
+                                <span>Módulo 1: Tempos Operatórios</span>
+                                <span class="text-teal-400">100% Completo</span>
+                            </div>
+                            <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                                <div class="bg-gradient-to-r from-teal-500 to-cyan-400 h-full w-full rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-300 mb-1">
+                                <span>Módulo 2: Preparo Pré-operatório</span>
+                                <span class="text-teal-400">100% Completo</span>
+                            </div>
+                            <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                                <div class="bg-gradient-to-r from-teal-500 to-cyan-400 h-full w-full rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-4 shadow-xl">
+                    <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-bullseye text-purple-400"></i><span>Domínio de Instrumentais & Prática</span>
+                    </h3>
+                    <p class="text-xs text-slate-400">Treinamento interativo com flashcards e simulados gamificados.</p>
+                    <div class="space-y-3 pt-2">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-300 mb-1">
+                                <span>Galeria de 29 Instrumentos</span>
+                                <span class="text-purple-400">Disponível</span>
+                            </div>
+                            <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                                <div class="bg-gradient-to-r from-purple-500 to-indigo-500 h-full w-full rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold text-slate-300 mb-1">
+                                <span>Flashcards de Instrumentais</span>
+                                <span class="text-purple-400">Ativo</span>
+                            </div>
+                            <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                                <div class="bg-gradient-to-r from-purple-500 to-indigo-500 h-full w-full rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Material -->
+        <div id="tab-material" class="tab-content hidden space-y-6">
+            <div class="glass-panel p-6 sm:p-10 rounded-3xl max-w-5xl mx-auto space-y-8 shadow-2xl">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-6">
+                    <div>
+                        <span class="bg-indigo-500/15 text-indigo-300 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-indigo-500/30">Conteúdo Íntegro Oficial (PDFs)</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Teoria Cirúrgica Completa</h2>
+                    </div>
+                    <div class="w-full sm:w-80 relative">
+                        <i class="fa-solid fa-search absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                        <input type="text" id="material-search" oninput="filterMaterial()" placeholder="Pesquisar na teoria..." class="w-full bg-slate-900 border border-slate-700 rounded-2xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 transition-all">
+                    </div>
+                </div>
+
+                <div id="material-content-container" class="space-y-8">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Instruments -->
+        <div id="tab-instruments" class="tab-content hidden space-y-6">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 glass-panel p-6 rounded-3xl">
+                <div>
+                    <h2 class="text-xl font-extrabold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-toolbox text-teal-400"></i><span>Banco Completo de 29 Instrumentais Cirúrgicos</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 mt-1">Gere ou atualize fotos de qualquer item clicando em <strong class="text-teal-300">"Mudar Imagem"</strong>.</p>
+                </div>
+                <div class="w-full lg:w-80 relative">
+                    <i class="fa-solid fa-search absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                    <input type="text" id="instrument-search" oninput="filterInstruments()" placeholder="Pesquisar instrumental..." class="w-full bg-slate-900 border border-slate-700 rounded-2xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500 transition-all">
+                </div>
+            </div>
+
+            <div id="instruments-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+
+        <!-- Modal Image Edit -->
+        <div id="image-modal" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center p-4">
+            <div class="glass-panel rounded-3xl max-w-md w-full p-8 shadow-2xl space-y-5 border border-slate-700">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white" id="modal-instrument-name">Adicionar ou Mudar Imagem</h3>
+                    <button onclick="closeImageModal()" class="text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">Escolha uma imagem do seu dispositivo ou cole uma URL direta da internet:</p>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-teal-400 mb-1.5"><i class="fa-solid fa-file-arrow-up mr-1"></i> Carregar arquivo local:</label>
+                        <input type="file" id="modal-img-file" accept="image/*" class="w-full text-xs text-slate-300 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-teal-500 file:text-slate-950 hover:file:bg-teal-400 transition-all cursor-pointer bg-slate-900/80 border border-slate-700 rounded-2xl p-2">
+                    </div>
+                    <div class="relative flex py-1 items-center">
+                        <div class="flex-grow border-t border-slate-800"></div>
+                        <span class="flex-shrink mx-4 text-slate-500 text-xs uppercase font-bold">ou cole a URL</span>
+                        <div class="flex-grow border-t border-slate-800"></div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-indigo-400 mb-1.5"><i class="fa-solid fa-link mr-1"></i> Link da Imagem (URL):</label>
+                        <input type="text" id="modal-img-url" placeholder="https://exemplo.com/imagem.jpg" class="w-full bg-slate-900 border border-slate-700 rounded-2xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 pt-2">
+                    <button onclick="closeImageModal()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl text-sm font-semibold transition-all">Cancelar</button>
+                    <button onclick="saveInstrumentImage()" class="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-2xl text-sm transition-all shadow-lg shadow-teal-500/20">Salvar Imagem</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Flashcards Teoria -->
+        <div id="tab-flashcards" class="tab-content hidden space-y-6">
+            <div class="glass-panel p-6 sm:p-10 rounded-3xl text-center max-w-2xl mx-auto shadow-2xl">
+                <span class="bg-purple-500/15 text-purple-300 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-purple-500/30">Estudo Ativo - Teoria</span>
+                <h2 class="text-2xl font-extrabold text-white mt-4">Flashcards de Teoria Cirúrgica</h2>
+                <p class="text-sm text-slate-300 mt-1">Clique no cartão para revelar a resposta oficial.</p>
+
+                <div class="mt-8 perspective-1000 w-full h-80 cursor-pointer" onclick="flipCard()">
+                    <div id="flashcard-inner" class="relative w-full h-full duration-500 transform-style-3d shadow-2xl rounded-3xl">
+                        <!-- Front -->
+                        <div class="absolute w-full h-full bg-slate-900 border border-slate-700 rounded-3xl p-8 flex flex-col justify-between backface-hidden shadow-xl">
+                            <div class="text-xs font-bold text-purple-400 uppercase tracking-wider">Pergunta / Termo</div>
+                            <div id="fc-front" class="text-xl font-bold text-white text-center">Carregando...</div>
+                            <div class="text-xs font-medium text-slate-400 text-center"><i class="fa-solid fa-rotate mr-1"></i> Clique para virar o cartão</div>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute w-full h-full bg-indigo-950 border border-indigo-500/30 rounded-3xl p-8 flex flex-col justify-between backface-hidden rotate-y-180 shadow-xl">
+                            <div class="text-xs font-bold text-indigo-300 uppercase tracking-wider">Resposta / Explicação</div>
+                            <div id="fc-back" class="text-sm sm:text-base text-indigo-100 text-center overflow-y-auto leading-relaxed">Carregando...</div>
+                            <div class="text-xs font-medium text-indigo-300 text-center"><i class="fa-solid fa-rotate mr-1"></i> Clique para voltar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center items-center space-x-6 mt-8">
+                    <button onclick="prevCard()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl text-sm font-bold transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-arrow-left"></i><span>Anterior</span>
+                    </button>
+                    <span id="fc-counter" class="text-sm font-bold text-slate-400">1 / 10</span>
+                    <button onclick="nextCard()" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-2xl text-sm font-bold transition-all flex items-center space-x-2 shadow-lg shadow-purple-600/25">
+                        <span>Próximo</span><i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Instrument Flashcards -->
+        <div id="tab-instrument-flashcards" class="tab-content hidden space-y-6">
+            <div class="glass-panel p-6 sm:p-10 rounded-3xl text-center max-w-2xl mx-auto shadow-2xl">
+                <span class="bg-teal-500/15 text-teal-300 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-teal-500/30">Estudo Ativo - Instrumentais</span>
+                <h2 class="text-2xl font-extrabold text-white mt-4">Flashcards de Instrumentais Cirúrgicos</h2>
+                <p class="text-sm text-slate-300 mt-1">Treine a identificação visual e funcional de cada um dos 29 instrumentos.</p>
+
+                <div class="mt-8 perspective-1000 w-full h-96 cursor-pointer" onclick="flipInstrumentCard()">
+                    <div id="instrument-fc-inner" class="relative w-full h-full duration-500 transform-style-3d shadow-2xl rounded-3xl">
+                        <!-- Front -->
+                        <div class="absolute w-full h-full bg-slate-900 border border-slate-700 rounded-3xl p-6 flex flex-col justify-between backface-hidden shadow-xl">
+                            <div class="flex justify-between items-center">
+                                <span id="ifc-category" class="text-xs font-bold text-teal-400 uppercase tracking-wider">Categoria</span>
+                                <span class="text-xs text-slate-400" id="ifc-num">#1</span>
+                            </div>
+                            <div class="my-auto flex flex-col items-center justify-center space-y-3">
+                                <img id="ifc-img" src="" alt="Instrumental" class="h-40 max-w-full object-contain rounded-xl border border-slate-800 bg-slate-950/50 p-2" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Instrumental'">
+                                <div class="text-xs font-semibold text-teal-200"><i class="fa-solid fa-eye mr-1"></i> Qual é este instrumento e sua aplicação principal?</div>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 text-center"><i class="fa-solid fa-rotate mr-1"></i> Clique para revelar nome e descrição</div>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute w-full h-full bg-teal-950/90 border border-teal-500/30 rounded-3xl p-8 flex flex-col justify-between backface-hidden rotate-y-180 shadow-xl">
+                            <div class="text-xs font-bold text-teal-300 uppercase tracking-wider">Nome e Descrição Oficial</div>
+                            <div class="my-auto space-y-3">
+                                <div id="ifc-back-name" class="text-xl font-extrabold text-white">Nome do Instrumental</div>
+                                <div id="ifc-back-desc" class="text-sm text-teal-100 leading-relaxed overflow-y-auto max-h-40">Descrição...</div>
+                            </div>
+                            <div class="text-xs font-medium text-teal-300 text-center"><i class="fa-solid fa-rotate mr-1"></i> Clique para voltar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center items-center space-x-6 mt-8">
+                    <button onclick="prevInstrumentCard()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl text-sm font-bold transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-arrow-left"></i><span>Anterior</span>
+                    </button>
+                    <span id="ifc-counter" class="text-sm font-bold text-slate-400">1 / 29</span>
+                    <button onclick="nextInstrumentCard()" class="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-2xl text-sm transition-all flex items-center space-x-2 shadow-lg shadow-teal-500/25">
+                        <span>Próximo</span><i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Quiz -->
+        <div id="tab-quiz" class="tab-content hidden space-y-6">
+            <div class="glass-panel p-6 sm:p-10 rounded-3xl max-w-3xl mx-auto shadow-2xl">
+                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-5">
+                    <div>
+                        <span class="bg-teal-500/15 text-teal-300 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-teal-500/30">Modo Jogo Cirúrgico</span>
+                        <h2 class="text-xl font-extrabold text-white mt-2" id="quiz-title">Simulado Gamificado</h2>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs font-semibold text-slate-400">Pontuação</div>
+                        <div class="text-2xl font-extrabold text-teal-400" id="quiz-score">0 pts</div>
+                    </div>
+                </div>
+
+                <div id="quiz-container">
+                    <div class="mb-6">
+                        <div class="text-xs font-bold text-teal-400 uppercase tracking-wider mb-1.5" id="quiz-progress">Pergunta 1 de 10</div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white leading-snug" id="quiz-question">Carregando pergunta...</h3>
+                    </div>
+
+                    <div id="quiz-options" class="space-y-3.5">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <div id="quiz-explanation" class="hidden mt-6 p-5 rounded-2xl border text-sm leading-relaxed">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <div class="mt-8 flex justify-end">
+                        <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="hidden px-7 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-2xl transition-all shadow-lg shadow-teal-500/25">
+                            Próxima Pergunta <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Complete Screen -->
+                <div id="quiz-complete" class="hidden text-center py-10 space-y-6">
+                    <div class="w-24 h-24 bg-teal-500/15 text-teal-400 rounded-full flex items-center justify-center mx-auto text-4xl shadow-xl border border-teal-500/30">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-white">Simulado Concluído!</h3>
+                        <p class="text-slate-300 text-sm mt-2 max-w-md mx-auto" id="quiz-final-msg">Você concluiu o desafio gamificado de teoria e instrumentais.</p>
+                    </div>
+                    <button onclick="restartQuiz()" class="px-8 py-3.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-2xl transition-all shadow-xl shadow-teal-500/25">
+                        Jogar Novamente <i class="fa-solid fa-rotate-right ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Módulos da Teoria Completa (PDFs)
+        const materialData = [
+            {
+                title: "Módulo 1: Tempos Operatórios",
+                sections: [
+                    {
+                        subtitle: "1. Diérese",
+                        content: "Expressão derivada de palavras do latim e grego com significado de divisão, incisão, secção, separação. Ato do cirurgião provocar uma solução de continuidade nos tecidos, via de acesso a cavidades anatômicas, órgãos e tecidos.<br><br><strong>Tipos de diérese:</strong><br>• <strong>Incisão:</strong> cortar com o bisturi.<br>• <strong>Secção:</strong> cortar com a tesoura.<br>• <strong>Divulsão:</strong> separar, abrir as fibras.<br>• <strong>Punção:</strong> furar.<br><br><strong>Princípios Básicos da Diérese:</strong><br>1. Seguir as linhas de força da pele.<br>2. Extensão e localização adequadas para o acesso e boa visibilidade do campo operatório.<br>3. Todos os planos anatômicos com a mesma extensão.<br>4. Respeitar os planos e estruturas anatômicas.<br>5. Bordas regulares.<br><br><strong>Instrumentos e materiais utilizados:</strong><br>Bisturi, serra, bisturi elétrico, tesouras (ex: tesoura curva), laser, pinças, afastadores e afastadores estáticos, agulhas e trocartes.<br><em>Obs:</em> Tesoura reta é usada preferencialmente para manipular outros instrumentos e cortar fios.<br><br><strong>Camadas de pele e como se seccionar:</strong> Para cada plano e tecido deve-se escolher o melhor material histopatológico para aquele tecido:<br>1. <em>Pele:</em> bisturi de lâmina fria.<br>2. <em>Subcutâneo:</em> eletrocautério (função hemostasia com corte).<br>3. <em>Aponeurose:</em> tesoura curva ou eletrocautério na função cortante.<br>4. <em>Músculo:</em> não faz secção de fibras rotineiramente, apenas afasta com o uso dos afastadores.<br>5. <em>Serosa (peritôneo, pleura):</em> tesoura curva."
+                    },
+                    {
+                        subtitle: "2. Hemostasia",
+                        content: "Parada de perdas sanguíneas. Pode ser fisiológica por mecanismos de vasoconstrição e coagulação, ou cirúrgica, provocada pelo cirurgião.<br><br>A hemostasia cirúrgica é o conjunto de manobras que tem o objetivo de prevenir, diminuir ou deter o sangramento, garantindo boa visibilidade do campo operatório e melhor condição técnica.<br><br><strong>Hemostasia preventiva:</strong> por exemplo, clipar vasos que se sabe que serão cortados antes de cortá-los para evitar sangramento.<br><br><strong>Tipos de hemostasias:</strong> Pré-operatória, temporária e definitiva.<br>• <strong>Compressão:</strong> gaze ou compressa para comprimir e colabar vasos para que ocorra hemostasia fisiológica.<br>• <strong>Torniquete:</strong> impedir que o sangue chegue ao local de sangramento (ex: faixa de Esmarch).<br>• <strong>Pinças hemostáticas:</strong> Crile, Kelly, Halstead/Mosquito.<br>• <strong>Ligadura com fios e grampos:</strong> amarrar ou grampear vasos definitivamente.<br><br><strong>Instrumentos e materiais:</strong> Compressas de gaze, faixas de Esmarch, pinças hemostáticas, fios cirúrgicos, grampos cirúrgicos e tesoura reta."
+                    },
+                    {
+                        subtitle: "3. Síntese",
+                        content: "Etimologicamente significa reunir ou juntar. Conjunto de métodos usados para coaptação ou afrontamento das bordas de uma ferida, seja traumática ou cirúrgica com objetivo de reordenar e reaproximar tecidos. Garante-se a orientação do processo cicatricial e fornecimento da força tênsil necessária à união tecidual.<br><br><strong>Princípios fundamentais da síntese:</strong><br>1. <strong>Assepsia e antissepsia local:</strong> Na ausência destas poder-se-á obter um bom afrontamento imediato, que desaparecerá logo que sobrevenha a infecção.<br>2. <strong>Bordas nítidas:</strong> A irregularidade das bordas condiciona má coaptação e cicatriz defeituosa.<br>3. <strong>Hemostasia perfeita:</strong> Evita-se qualquer sangramento que determinará a formação de hematoma e infecção.<br>4. <strong>Afrontamento anatômico:</strong> As suturas devem ser feitas plano por plano, sem interposição de corpos estranhos ou espaços mortos.<br>5. <strong>Tração moderada:</strong> Suturas sem pressão exagerada para evitar isquemia e necrose.<br>6. <strong>Material adequado:</strong> Fio e agulha ideais para o tecido.<br>7. <strong>Boa técnica:</strong> Passagem suave da agulha obedecendo sua curvatura."
+                    }
+                ]
+            },
+            {
+                title: "Módulo 2: Preparo Pré-operatório",
+                sections: [
+                    {
+                        subtitle: "1. Os Quatro P's no Pré-operatório",
+                        content: "• <strong>Preparar o ambiente:</strong> bloco cirúrgico e sala em condições ideais.<br>• <strong>Preparar o material:</strong> insumos disponíveis, testados e esterilizados.<br>• <strong>Preparar a equipe:</strong> cirurgiões, anestesistas e enfermagem paramentados e cientes do plano.<br>• <strong>Preparar o paciente:</strong> avaliação prévia, jejum, degermação e antissepsia."
+                    },
+                    {
+                        subtitle: "2. Preparo do Ambiente e Zonas de Restrição",
+                        content: "<strong>Zona Negra (Admissão):</strong> Vestiários e recepção. Troca para roupa privativa.<br><strong>Zona Cinza (Circulação):</strong> Corredores internos, expurgo, lavabo e farmácia.<br><strong>Zona Branca (Restrição Máxima):</strong> Sala de cirurgia propriamente dita. Exige paramentação completa (gorro, máscara, propé, capote e luvas estéreis)."
+                    },
+                    {
+                        subtitle: "3. Preparo da Equipe e Degermação",
+                        content: "<strong>Degermação das mãos e antebraços:</strong> Escovação com solução antisséptica (PVPI ou Clorexidina) durando ~5 minutos na primeira lavagem do dia e ~3 minutos nas subsequentes.<br><strong>Ordem:</strong> Unhas, dedos, interdigitais, palmas, dorsos, punhos, antebraços e cotovelos."
+                    }
+                ]
+            }
+        ];
+
+        // BANCO COMPLETO DOS INSTRUMENTAIS CIRÚRGICOS
+        const defaultInstruments = [
+            {
+                id: 1,
+                name: "Afastador Farabeuf",
+                category: "Afastadores",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczMhTr5asKOlPWJZipijVVySq3H3B-to6GaM5e1IACCqCXitr6Q-X2JjZzWKpfnHyllOZCW2Q80AKNGBXvuR58Wwm319qfgfd2E9Vs5cdX__RRbBWwVkFrgsusWiuLKbrpDGOAB-pIS88xtxTxKMazMlBR5_4qrrHjZxX_xOSh8Un_GFL0WvT7QqV1MpNNxVAVp_qGTPWAj3CXKK-duulRTqrJUvEYDYqigRSpgMPW349KFwNCAlAlGjhKpBau98e3NiZwT5tGV8aSRNCCuUVr3fl-jEtB74dqTuP-Z76GtJUgdwy2dxuZOJVtMdwmKhoPHBuGF-RWtlifkNUrumylznhr5lXLKCdFpVkYrpSrl2b1hLe7aaZXL2iEtIityazgWxAHzPmvwFkOA7oN1AFn2eilKb3pHPp_cMvC1MHnPk8C9AMhCrLFU3RdRSozGHUgzvApkhiHUHVglc1tU-R7oYtS4WAEneIIPv55HeWYrBrDWQucqP3vA610ryjfKnyb56h-2-N2nYKh4PgngNs0-mr4WUlFS4wXFU7c-qpO-Xa3PCvb-bzvHYdiWVjPZO6RThMTH0a-cF4ReWkMr4ak2hIGqCu9WN7nNm7ASNDEWyky26TAW5WHBG9f00cOXVwAcTj1E-MFxvaI3txKLUNAc9jyWw9mfxSWW2hbHlh9ZqIT7bjCuT8bvHwiCKOMhuQ68aL0RbJkXHSfqMM4sBgNzgZTMwvJ1NWhDtX1j1Xpfasw-b0tYjIJRbRe_X-xFTh-s-rpovxvCbTfCFspkMk9cmLmkzqLr5LuzlR7VEmkvlymQqe8943zxah5S7WK8BoWapfDxhYTfUsIdF9xwesSr-oqepmzDz3Z2ottDDBdvPp0KDa7vfKtaBQ892jt0C6Rh-6MBVg0mRkiAvRnk5xR-_mtsHQjS7oLrqr25pO8WXOYtWCLEJ7XIW61IqfPsEPNTLzR_e2aQUtW7s-UsbNo8MSWFr2yamLO12QBJHOIvBtsu5mfVvEGcjIxgoTzaRElwKvASRF-6Z=w900-h674-s-no?authuser=0",
+                description: "Instrumento manual, não cortante, utilizado em pares para afastamento de bordas superficiais de feridas, pele, subcutâneo e aponeurose."
+            },
+            {
+                id: 2,
+                name: "Cabo de Bisturi (nº 3 e nº 4)",
+                category: "Diérese",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczNxPGbxUo26W6m2ao6C5cNIeT98ahueLOFy2tJItBmA3tbLWQvLGkMkNBMGEeB2Y6YwSx3XHLeCQRuoFI9raZsEAC0XqvbOOwOjdaXZNX9dofSuYfnajqmfGTd9arUOlKGoHkFdxf3yRBZGf7VhaC3lEiPg8oVkOlfno1XnYpvT9ZosFjnNOVQKwAA5DEad9ERrghnQRdfzdEjcOimCdVamViLh4cwvAuwP0SARBWlYkSyN5r-5M7vg-WYcJXpnjIRlxtgTi8jsESqhg7d1iFJEY8Bq0zuh81jHbrEMctIB28-YRHwgsM8dXGNGRl4vb4TERLyRVU8N8CdPXb5rnAvIN94P_H7sLiwvduF8zRKEOd-WVLQ_hdALAFe02yfcw6ru54LaRhOyTxEhcNh5foak46btfUzyTGfnojcDAgkXXRDIDNgmZoYGqnZFEzDNefylCJcaJ_BQPl3TCkFTaklx-khpqgVw03-WZz-bGSrhdEu-VHKwcMHyuSlpSMsegPSaG7t063bNWxV5Fra0tPM8b25pZBZCiszJ0GQAw3pdwmUz6XnCD0MeXvscPLgGDGorHEhvBZ3lgzbpKzHO2e9cjy9cjM0smQOHk7NE-7p2QgcC4DuDuNsVzNbhdpviKWmqMxo15V_KBxxJJIqliUl5Chrw9D896NTM0aBzwb8yr77atWV83o3VRxII7JpuR0TUBBkJIlMZTC0LIwUsiZ7pNUZ7Bal9Ae_IMdqtWT0BoAHKzua3Xc4Eo9MBdcogRr9oZM4E_l3573spCnMk5pTjFOGNR_sYI_u_GNtl2B3b96Xnbsh81-B8RAiK5sR9RMDxtsOiMejaTpTIeZH5NyGH0vJ5J8FwVZ-bnOpiHxY97C07ZTC0uKZ9IkaoA4HNAb1OnmHvKGfaCu1fbPH4_hM2DwGh8ZEhJB1X24_5TsZQPYCBVVnYL-IdxxnvI_1XZPrRnQ_TiXrK7wh_rYlCG6zDIeiJW4v0lZo16zMw0Cjx8WFLjt9CYfH_dJs0YJgD7ukLOuZBVNcr=w800-h759-s-no?authuser=0",
+                description: "Suporte metálico reutilizável. O cabo nº 3 acopla lâminas menores (10 a 15) e o cabo nº 4 acopla lâminas maiores (20 a 24)."
+            },
+            {
+                id: 3,
+                name: "Pinça Adson (Com e Sem Dente)",
+                category: "Preensão Delicada",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczNfONINhuUkug_xnRm9sUns0F4e2Kz8WXa-UWam5HV7lLMMsD3vRc8DrLkH-TyBfAbzhmGmXK7DhvFv7wj1kYgjVz4w-sRmR6a63hBO3ig8kmvrCQnANBqUUE0U2yP6PYMxOv7FP2yVL3K2JaDzo_I-1qc0ywOkljxpkx4OVnwrao8YkBlNOhBYoUIZYqNUcdAozeH6-_b6zAowbfPTuhz5m6zaaF4uoVvjuxce1fYJRhJpIO5HyMh82S8QqTEsuR1QQzO4cdKIpkCMNmRC9SvwwxtXIqYEvb9xoUrImJJ-MDiVuocIzzrgo6kX--E_ygdQb7SFUklZ5ztbNbKpX361a-rV9oWIxf_CxQqBqjLgxFDN8h5Y-8gGHFYCN64OZF2RAAWL-_XSbkyEO_nIxbYH1qmpZmqOgmfRAToeQMmDNJu_XGRNlpY-pwJSG7BSd4n05gD6Cjzwm_0SmniR4dpOIvF2Up9G2r5ERoDZJE8EVMQnW_T3ZD2JaoxyyRfz8gxuThbtJxp0jc-2ukiPSkpwnHrtjCoaQiDZmTfzAzEBTWlAmksc-MrGh8Ppqzoh_CKTpGoPmFhxKdyrHn1lBvhfQgdb6M1R1Baq9u5tcpGUL41YaRC3WRLTsv2AuRWncbZ1DUUzn8_5Whe3Dje74sDmgJlbtjS5W7JGoZHdclpCxwAnEFXSxMuN6R2wahNhPt0WgaYUjA0Kkrsxdg216VM74xBcQIo6jlm281gEr15Vl3LrO02b1yLtXKnj1sM4gmdYZbY9_DyjCAtQacorx8n4oeXg_lr-miMZgTz5LfsJ489mpTNYtDQgK1FPqz7bfdxaQK5t2G0HUDViuyUwED16w19G1nKPOygqzmX_BGicIsnU1j3B8ViEg1s8M_z2Nxs3xq5i_v6XucU61w54s7jqKGjcm7XZ7hD2X80NXgDge9ponOcwNCIp_SWI973LopDEMy3oqNriVCRrOE2Ryh0cRNVoSIo8Izxnqoz_jqHOF5BMpYAj07SzcaubuCJ1r95ylzHRg2a2=w1260-h1260-s-no?authuser=0",
+                description: "Pinça anatômica delicada de haste larga e ponta fina, muito usada em plástica e síntese de pele para apreender tecidos sem esmagá-los."
+            },
+            {
+                id: 4,
+                name: "Pinça Allis",
+                category: "Preensão Elástica",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczNB7WvTe4Ayem2g9JsN38hXYkralKkmv24ba3B8yTeXAEIPMwEXC8KssFJmlJoYTlhaCQzBsrHgTsQCU_-5EyFqWKDg6GK6oXQevA1MK8fXNNcshOGXkPyq0ZCEf-6Px8-0lATaIVdGEBMb6v7EouljhppDfl3NTRXEn4A8d-cSG-1icivNyktuN93pMjnccH9oawUl2vwlDcR5z-dwnHRk2d8JTUQEgWdqyGT28klEz4Ssd5iN4-gLJ_kUPaxDsOoEM_4VIq0Ob6f6b7ZMjVafMtHmKyl5ZGz5SWgyYrtN_Mx-2mIuwslEXcX-5syCPqUPdwGyRkzrOkQh-Q-fS6DYvORq-XADQZ1QMy5Kz8lQdhgT9VESf0RhKVIvzYwIxZ5BAzRMk3UTnO31-WnTiWpUBNXWfZEk7rpMju6_xFYGFpD_Z73Rod9WljBs4xxUUUrZK69KlirEb9lxfV2gJJX3LSgrgz-zYbK_9iSirxr8w1cka8bs-mw8MSnCfWZqnJgxp-fTTrWRZqNBcKGgLNcMPk7MUT6EaEWh3QruvYz_lW5Xlhbd_d4LOq623iqdx10ItnnlZqw9pC8N8HLrsaUZTHLO5ZBpkF2mZY14pvy5lLFh_0yHJDQ61nTrePGPOZ93RR7If5_18sv3aeDQ4t5m7KZwo7cj5491ZHL8QFPG7Iddm2mjXHpRFiGNRPGNerQDvQV4v9zQKp1DRC-UOrE-q0HXuUkW0OtoDmMTe6oQn7GX-RUJiXDYkvv3TTBG39MaID56antoLYY7Wrhu8CILykSnvg4MOWa7dXxW-JLwYaGkERv6DOWr7tlnzjuJ36SL8iNB7t7XHhK-q32LKDH5olXIo26wHW6IjnNUq6v3tpMu_aEiq4dBBuuD7Vf5CTXpbVyxBFDnLZLgj02CroUnRjX34FZudIUlz2iymN6MAsluNzm0mXdnFNZKMqQpmbfVw9VpSU4dmc3n5_z3gVxDELfm-2D6lDMVoyQFAuykhYLY3ZvQNByeN-tl_69_L3OBuw1gDONA=w1000-h1000-s-no?authuser=0",
+                description: "Apresenta dentes finos em fileira na ponta. Utilizada para apreender tecidos fibrosos ou estruturas que serão ressecadas (ex: aponeurose)."
+            },
+            {
+                id: 5,
+                name: "Pinça Anatômica",
+                category: "Preensão",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczNBjjP8Hubp0GzLbzwxpNjCF4we4PiDLqBq09syImvMbWgDN-8SQ6NTrTrFuxgegGl1s5IPNetYv6nkmd8plx-LyJDktbg-QKgT65U91cqV8rPlr-nIFLhDAL5OTHB411ZuQADkECPGhw4H-v5CiX7auFeud6_5LERTVobSafkhrRjtz0XXslZ9BnjESIOC80R8jfjBNY6eSNI7UdnebU-9PjmOQQsyRQ7JuGJKeJ0NWtPSz-rPokj_7SBFWaM23q10f-Ad_FR2621oTwr7yn5_CrCHQ4TvCno8PqeMk_CUdhT-uhXJD-cyQrzMvR9g-5_FcNgztw8qlLa6N-FxTQnpgXLIL8Gh9tT7G691tbEgXLGfTc91vInsMfD6eWYg14NGIpgjetyK8OaStkyF_-ftlDhfKDSLdCQbuLW2vPLJDTLpeVw5QUzmpvqYEfC0l-qSYFbGU904Tv99Xe5RVwrfNCAXh3O21ap7JrvdwjAGno_kJe2Tb_tnMJPjO56XH1UIAZu04r00yR4IwuRw0ONgcXOXdRjFuRx0nKI1266GJiUEOwgMQKNB5Z-0sErZjzjZ2MO-4wlMSTZAv9bqn_Q7DIq8VxAdSVp-tILUoV-_LLzvle0Ra0H2Lo0svKLZ8pcg37NWcVGcNE-HfNRBI9A_il2XLNYrqB8YZLSUXU47zHJQFYsnA2JmC0LbpqsqVk3Ms-uwbBkerySdyTmyEEJ4PQuKZaW8p86iLhAoObV_B-sRPvvo5Y1uaC9iiJheUMPF9C3NnvBGnB84wzQVCiqbrzPHpGyCtw1hLETsFAGBYWzlye2W63QgREYuqqThRzemU8Shq1po2XZSbAXdSx9k0rYGZ9nPTLb8oZLo6IHBhi_d053EQONDW3Qb-Hul1XelOFjmqL31sLUGVUmRMG0JTy45RFjAawyp5ujpz2mAFKJ-M1RavGqoRfnRbCGsYek7HGF0wlMJ-pN4M3qaKQDn6WYdNPRAZYNqfDDkNtoPqmjvZI79KOWB-c3z71P2kJ3ctegg5TcX=w1200-h1200-s-no?authuser=0",
+                description: "Pinça sem dentes com ranhuras transversais atraumáticas. Ideal para manipular tecidos delicados, como alças intestinais e vasos."
+            },
+            {
+                id: 6,
+                name: "Pinça Dente de Rato",
+                category: "Preensão",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczMLdk5cmubgnivLPcP2BzK3bWmFjKQE9BCpiMfJ8ZmMrLD70QYohAmOa2gSIT1Xm-SoRtDMnhm_kU41o_-2-y3d5E_C3KH2iorOD3n3G00VmLXcxI0j95-onmpp66qFp3I1Yiq6aKvMel-STP2p4aCgIox3jnzBNxr4suB7JqGfdW9yEuPej1ap8mfqUGGLBIovg-OPPcDANVaVhB3U0C-JD1EJuw_KaJ5wBvCAsYXW33Hz3t-TgS1dtZkpv7A9exR5hRfSr8-cSIpI87kmIZ4rRn1lawocne63VLvhXYBHz9EUQf93X9T6nFBlfRJzav1ByDVwge5L28kOY7GEtQIoeI4s7lcjWU7oGaG6phqgkw_xWNO6JbI9V593WDYys4ONf3qL1w3PaGuKcez2ZAMhltODPkg6kxff-ueGGbuVwtIg_GDljOT5gA2Tzb-NL2xSJOPJozYd7UsN1ih8EQtEgj5VxtZmECsUVE5KOvmA9dvGoJLli8qRd25cV1VhsqXNWCNzSGEkfzLMAVx4GHkqMoekCktpXyhh_4UUKaWSs7DcqudAsKaGlIPfsWtLtbrNBUESyoiLVpLcQ0wd14MYLR6m5FS7trPYVwij1RblS3NaylW5qG4Yxl26FieQceMF-GtYrKXP0UUHKRDa9D0dKlEzeBMWf6ti42FXZiJrET6D7Q1hfaudjxjSwOhlFzku9u3VN_n8dGo6DpKs68lKL20LC0vwpsagnx0IzAGepDlftHjxP523cyb72yP6QTbTcR633CP_uJ96koI1srh-EqmDf7AKtj_izfkRdz4gSdeHzowIEtjpPw7MsNH9xn-TCHD2PSVZCewqPZcUsAfuNZtuhZANfNpuMHlvahdXRvTMXjrfEWkzprOFQqNP7Qwf4_AFuJP71nAs9tg_cUsAI3PezuP0FcB6TnQPJkcReftfVzIxZ2f_ro_pDt4cgtCGH8FWl2C6vBVwimlPvnOxh-DJ5kkw3AQymj-eJyWcBlI7y49QG1ew-QyPnOxfsyVBSPIuz4Gp=w788-h743-s-no?authuser=0",
+                description: "Possui dentes agudos na extremidade que garantem firmeza em tecidos resistentes e densos, como pele, fáscia e tendões."
+            },
+            {
+                id: 7,
+                name: "Pinça Backhaus",
+                category: "Fixação / Campo",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczN8BcYW5iVMz9HnQTqg6BuueCP4OVnLwYEGMIBagOACVQ190j8sq0Kn_xO5G6fmaOXEAd_9hRXU57JTGQS1R80gZAhzNelLF7ymaKMM8P3q0shHKBw_fPYyZQ68PFGJfLT0fxtiNqA5uJFV3SgSzKrAa8wZgYFMcdHphZL42_aWdrqyA_F1fr64_qWvqsdkpC8ZhgkyxLLE2iILDkkhIfOwow3Qa7JfvQYMZBNsLRxljl7fe8b6YcL-0_DQmSm5OBjkmNEBSB7F2iRyZsvlD9F26E7-svRXGzxdRXxLHXCHdks-snBr_RprDKbZAngcQI4Uvb91H4rBGHC2uhbNLy_SwGVWkfR5Ii90z3L59Pr6fWyV4kirZLUl_Us0BO-YAj8jqz0gRJeNA5BkZQgU4gK8644i6FiVeuoU5KYBdZJLsuAvSoislK1zV31mV8MYWem_8mp9Ixawh_u_PDsbFMf975HifdwYqzccB57_8vuyj5wfUY6sk8gNn6rs-kPH95ktgSGGvZNno15NaaoMWLDjdf0bphTFBQHE8i43dwM46A8vHUWAKcgtkjU__HrKQJ6lWDbizQLrniewgp17tYbPlYH4ODz2XxlwsR6gLtGRl0SRbpU1QY9yR-yw_--9tE3WDGcyr5EtvDyzemTFcbydQ6kOS8UGl9iTX-wJDvQ8-9KhDsMaBbyqAcm-Qmc245rirdy2AQJfRum_ufyrN00ELSAxCPefCtlGrCd8KTn5t7h8mcgTjPtXof6QSYVQSUaGYJlJ36t65N3fwP4T6ZagTeW4xJVH34_LxliH5xjlEGBqOB8F89Egyn4JxcGG9oLqsQKrKc9dTz-5T89BwcEzD1GBcDagEq6zYzEGiv3uiHnvi09HN3TwwuZxRjvTl5ChFmKEAZhrrTn5MSAQ5HjtCtW5ML5GYCHpIiGTqor2KhxvGaAwbNYu-CtwiFpClR1AGEYqarXVxhQUDRvobRJPIyWY5bKJzGcRoDsLua2u_vHTFzT_Uq38gmXX9v8Q9qtAxu0Tf8pu=w900-h778-s-no?authuser=0",
+                description: "Pinça de campo de pontas agudas e perfurantes cruzadas, projetada para fixar os campos operatórios estéreis entre si e à pele do paciente."
+            },
+            {
+                id: 8,
+                name: "Pinça Crile (Reta e Curva)",
+                category: "Hemostasia",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczNoyVFyG-2ejO9bIoDRPQi3JOT2OY7vqDQeqDIuXUZRM1aNi1RL3JRchKCo02smOuVJv2ddzPhT5hclGFo2shMUMp9fu_2M30Z3igVVJM9MEMpal-GtcdnsEc6zyEdgUtRK_ZfnL3FlaVI-esArNE2-o1UjxIdtND6Zer_T1OVc2dsZILSv7sfIwOq68Ha720q6gOv6i9UOjhBK_VytV5C_KhaKy5OGS7XfHp_9jAmhq-nppRRDqgJQ1mPcVh193kdsyTUrKJuudb9MN4YO5Z7B8cU19q3KRLZl7n1dPNsus3xJp-zBB-CAPKQpIXWFyXstwCNWf7MinpNEvE8-ApT6uwF0A1_vpekXqVZ4-Vo1GyeyoeRS0B-V7JKk6eo7kWbzNUldyhDxTwd9wuOv-Z2n_KiwMfLsCFMXxoiqcTRSZlNDcvPt8EqPXyPWomRjZwz_QJc6XV79NGsQdrDpBpY9juEtT7-JPgKl1rUGjZDCzuPzqVs1hF-CwU5Zwr3ckw-4dq71XWQeSWE6FTtmMwSMOQKNGbj5UGWE5Bs7KM0PI2kB-16G6MZ0Evy2cQ90ul5Nd2tm1ZD6lKcE3TMnsVAEOjFfoqd23Lh-8mOnbmaLQlJbX-GvlwlvVSjjddW-dqpkO6G5kRtPog4Lh-Ho5Jtel9N41yJPDZPDrPMnCJ9oTlYVU1D3wwFNAeI1Ym6k-lHfK0bTgigVIn8nrwnld-d9oziGufa1y_JTpDouxWqwgx0K3gFNYRBbgqGYccmmucntD6y7Htq_nAWp2kd_IDgRiPtAmbIuU19k5hyw2cKr9VTM2qAWL4KOdiRf2Z7xBQI-RFDlt2Ec3LubgYH0vHBCuVllnROcywXVke_6azF8xQOfQCUbSd688hAL4GZtuRkwLXLJhZX9rV2_UqbCXNq6_nd0EP_cI_yv8IMOfKfZmbeMh6lr7-H2ofB9eN8tEpmQFnlarFyCNqo6wcL6GnsGDc81zJPuq8XPQLtPO1hu5ocCv2-5wl8IHZ67aI59nzlRzPM43lrn=w447-h447-s-no?authuser=0",
+                description: "Pinça hemostática mediana com ranhuras transversais em TODA a extensão do seu mordente."
+            },
+            {
+                id: 9,
+                name: "Pinça Kelly (Reta e Curva)",
+                category: "Hemostasia",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczMtGYwEsZogRgm8nMSf6YeMQR1vb6vkdYraZrWJ6Q54HbuNBbY18EZaBhxtfkxMg3qet7TIUzl5-ytozpubXsqltkzsAnP8A3DIsPTaNHieOL4mnThlx--Ev-3xlsIqWtL8SNUFu_heF5jIQ74Py0ufVGitKUQ5vicA2EZ4Gp8IlQ4vlUnYElKvJhCTyG7kyYU-2TowP6OJbHbTmMO6Rv9rZjCAyJCd6E39aUA7ZSoNmdzTlNNKvohS2SQu-FIx8SpjFZvCQl73qOKhlViDke9wkb1xbsJIpfP5Kl3fVyijdtqSZHrH7vqrS4lsFQIUTFLXdnDEehH3-sLckGrQKLtzyLZC100WbEElNS9ei77BqDwtSLGTgYZh1yX2EkB4ZtT5SbpGMWosgrwN2xoI9Pg0Am4DlCEm2eTE79WSYvdWZOuSR3O4fJKWQjiLgYbVqyHMxUhaj1BFk4hnVosO0MM18ypy7Zo8It_fyWaj3SDaYk6Ln7rZdGaUKdMN20FDVVc2SJCFdnC8-N03DK57A6kqmQr1H4VpM_6FfOwO-bdf7B8ARA_jdxKPRxTXpWgf2g41IjiYKfONZ75bMHBZE6FFfNutjKuuvhoq3H7WTQjAgg_7ldYCdW94E6Ogr1TtTjymW6gqReG6Wc_RNNCsEvQfb9BiF9xhy3SLbzVMWK-5pHxl3JVHrPG39TuD9RN6bGqbg6HYlXD7DdDPbDuii0oCEP5w347dFrVU6JrmCHP-kbWFF0LWsTlugCCi6qpkkrYMaAmZElLsp8e3I6eLny2FBafPzG7WJ7Q3beXygkQaCFnKcUp7Mh8OHLpnL6cQk_cDw7dEv4t3R8aqVDS5b0PyOQQqU7dC9Q8LEoFuZ_6pDodWvVfEei6T8plLWU_r5oN_F_ACUfAGr0egwLmvBqjQyvRKTHDI19iopHezPABqBgZViIdm7abvUaq1HkkBP6V2mpvVtSRAcCaHIZ4DIFYaVDnaRuip-NLoYElTUKnZlUKuxCdiRRm248CopFAhmMCyh9fpkv9w=w447-h447-s-no?authuser=0",
+                description: "Pinça hemostática cujas ranhuras transversais cobrem apenas a METADE DISTAL do mordente."
+            },
+            {
+                id: 10,
+                name: "Pinça Halstead / Mosquito",
+                category: "Hemostasia Delicada",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczOM8UvNzZLCyNUgzxC_GY1BcOx28lmtiW7jfkJLBNTaLdSijiNWU5Gyx1oNwrircbRi4BQOnkXzDxFGjZxTzPtudowmA7xTM16QI6ufrIGotOw43pl4p6eREmfMbNKFeBhsn0GgrNr42L-DMz8iQMyZSjewBcj1Ni2DhOlN41VWMAQ0CGXfpTZ7OIb3ld6zPsh_YsEg8gZMCtXtIIb3-Lo2x1qJ_Lr9_iyKPLuxPeci9OM4WGmo5IfPSDnuE4owf-zR3nN0EUzee_xXl2XP6O63cZgX115XHsLLpiOixUjMEY8cmtEkDqeP0C5mZf6TkPs9WNtUrNjWa8bOjyJzc3ghQ8iC1JHC2EUDEcDLAc9yP2wRgB6wuGEEIfTgJDG1On4yiBmPcSa2Oq_ehOABhJh6KMIoDyVZ1jb-FDpr9vBr2A0jlM7APPi5Ld6wm5nnfwnKnAv7m1V8W2Otp45UzDfd3WdRLDBcqCZHuOluajnUhBdtjtTdiKsLtcGwZ5oxQEodMpSjqLsiNDRgLIxnZUQmUQ3P2-Hj0RrHR1nEQAgjMukZ6E4O5q22j5N2O1GKg2sUQszs4_kPZJep6x7v6xKTVlnuI0NQxZAoEmKILIPBcQL3yqQlWEZOK5EVyq6ZpnICnYzcBgH9PxtG3uETsPQM3D7Ule5L49vTF6MObqiubgEmfXhWBD-m2zJxwFRN3_7XAwE1Z90ww1AOKIj-wyVhltzSr2VoHxOf8symIxtN8YVJjTdKI-bBxorwUIOH8wa3LIFy6WAdHA1go4Ewk1vDdS2oDTxNZKQxwx6lCYXvztqXuyDKQksZaRmZ6Z0Vq75vfIiWMCFGzp54lHiilCfMAxhh2IwJ2dHabVO9gGKDCxWLoF7qucIQZLkosvrRugmBGyFMbnPXV-WDAmrZmrQ1LJEz_skIumL6lUY9-09Y81kE5ydpZ0VsAw1h0hEW0SZXEK-mdaUq-YtzlneMm_1DPWm-OPY1USIpgnNr3Lqge0dHIlSal1DGyoJoJTWotiJsZFZkcpxc=w499-h400-s-no?authuser=0",
+                description: "Pinça hemostática pequena e delicada, utilizada em pequenos vasos e cirurgias pediátricas, plásticas e oftálmicas."
+            },
+            {
+                id: 11,
+                name: "Pinça Mixter",
+                category: "Hemostasia / Dissecção",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczMwySd5Cw8UtuLRNEQopDETJljUqSvqSoKp61XTOh_D9sG60xXE8xvv8TOCs9XidbpSdSPYQrvdOeCHCduiVoqmGCk4NKEW3CdOKgJvRExDyDFbknR3BT-F4tttSuSjbHUJYhUzEKlOtn-hpAsnHCNo-UNHr7xnRn9u8J_aVaPX0k2JwLFjXiM9shS8BHwCBDuzIt10Jg84l1klcCSQWI3Ijz2HHK6HFkk7N99REgzlm-II_8HgkY-wZkcSUEs2YS4cxTnXky7HJE8K-itSyF6N_8f6z5ZAN9FJpCej3wMLfJSMyrugclU-fIzTG5FGrAJ_F-1Xf1iQrVittgunob0MB1fmVLWw_pUnkVMgj84X6hm-CKMP7gWcWolPaes0kOYZrFfoxnkLIRHhOVfVUjWffjRr3H5g_XEl6oAp2BdtlHOWvfmjn6bbd0EXVY2zF9ORv3mg7zTS8V9VAh9Mwo6_mIyGBgzi9m4fTwQONNgGoPcu9sH3hQHnB80H4UqL4PTGl8fNtYc00q0enqNQVsr1-eNqTDpva11MCK4KEbNOMXlpaE1Ri6Zk4rkM9j48uuPfKbRc9IqL3fd9Lx1m2UjmvBRpDEOQ3GptQvnHeyCVIwBxulQtG2rnFNVIStUrHYSuxqM8019b_jm6b_4adHdLzg8uT6mjXrgCeLf_bnW10Yw_Cn4slPlKUlGxZKtm8MbqavyP9yTmTfWAIFdm6bR6r0qcHFRvhfGyNu5Xvx5vSIKzJcZA5Gj4WrxJYjGyfxzk8P8Ao0KjmdxVgrsYhVHKQZxRWiA_-PhzT0B40YVPYsBb9ziQCDnk8fOctJAM35lLmDFpt_EQctgPOvusISqP1G9zirI0-kX_8NlMG7fMzRPvQeLbTn5cZHOsoUKTrSZPcsp-4jVjb3f36zW57F_NZb-8xQEpM71rlbRl0mB-QakHe1V4l95mFtWJiOxrU0VHmuoOVE7V2XDPHs_yQUH2pe4qsfi9oHH1toeVBEMqG7PnTCAS8bSBHRuLpha6Dm6X5l7VDDh3=w447-h447-s-no?authuser=0",
+                description: "Possui ponta em ângulo reto (90º). Excelente para passar fios em ligaduras profundas e dissecar ao redor de vasos ou pedículos."
+            },
+            {
+                id: 12,
+                name: "Pinça Kocher",
+                category: "Tração / Hemostasia",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczM2GjSuczz3-dwC1Qwciu5E4BvdnM_-OqDS8yHPN36haQXAgnyG078YxyytQTFUECVTvRW9AnqawGuG63ILsKh1TdYHx5qrl-LAB0vHI9jLnchAt8-JsQDXI_rMMRdomaDdw_AfG6JA52ekYAQv0Az5xzxaajE63wOteihcthYqwYrFsqFS3ku0NMigva04QLwoVPUnFxgNRhFF4hQz-zQwo3gqKKjK5FeGVKXoQs8cTP9dspX7jOMMN33Q_fyXZfObDQjtY-j3l_3ga9bAMWUxxTfX52PuQD3MUAEuoFVWdSpSN28VyTtBQreaDbLaHar6IPspw-IGQODvIDIlHx-_ekNuJEg-zVZKsuioyQh6p2QHJvTajRpMoCtRbEMpMbGgtqQ9Yhzkz4U0hcajc563WDqW-xpmtK8NfE70RGtacj_XCxwtmztAEq7ns6Dxbhk66NWB4sA7YQZeew0c5ltPG4359OpgEKY4G8sSBk3ee6zceLaWfvN0v8EwjTF9LdA4pjqEjIx_WjNpB7rigUennJoXITfMCqvMwj_B2F1ufWi9ek0Jvqo-W_-Gk23Ps6RbqixSkkIAvAtYoNgLRaH9EFSWdLtdi1dsCp7NEQ9RP56iSjyeWb2XH6myVnrokaLSzY8b6d-5ahY42CpEy72oZrGQyqmhav0G-nPJYvsIv7xobciQunvEgsrjii27j1jJhUe9raWMfx2hEj-6M5gtfuRVLJUfeCr5mLGz8bq1OF4xmcBYiz_21UlgyLweWqEGDsfPe97UJzuELoT6NA_EktRMPLfCFhxRplMuXKUj7INeyI4Xlz-Zg5tYKjsyznIVdR0SsCZK3VEiUbu1WCAmZ5_cl8M7148CSHi3Ho37FU-Xq4sCNtRs29-7b_UNP2mw-9ayIYhIPrm7roq9QH6GGtTrdI4wfDD8mUqBNMZFVSwa-UH16byIRjibtG824NRMTC9i2LpOHpspno4xYWBShTqO798j8lsKZQUnSy1kbyLJ_OEX1i-fH1CAe5BjTcy44JZs3e7q=w588-h441-s-no?authuser=0",
+                description: "Pinça forte com dentes de rato na ponta e ranhuras no corpo. Promove apreensão traumática e muito firme."
+            },
+            {
+                id: 13,
+                name: "Pinça Bulldog",
+                category: "Oclusão Vascular",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczM8hUaH-W8mHbDGEWx9zNn1yPSxtJgM_S_J6W1lh4MZBLLRw75TLPRSQn_qL37r0Y7ghfKct9BhW9QDB5mxMfPzJh_eRA65IvKnpZGLKGKUkZw_vLXDQXn0dEuTxYmMST69m6rlzArOloWp6qsJmTy7q5A4dIWAA5_kuL5GDF3l6otFvYG9MxG8GnVZEHxtTR5hU4LguyqIU-Itn-qX8JjeT_GQ1vAXc9Gn6mKY3eczd8k7QBx_8D6ChJAXNUhi7KSqvNagTtEmI1JYzqUnxlHrUFANMbBnmHVgNC210chxO5N49BWfm1p2fGC3nsbV6opOwwy3ogFvRS8ovFvkoPEhUeAK0XKq6Ee_c_Kr3hJiEvCDcCJNwtBkrBUjDJhCnjuDKGLxsliwgAkJvXp_crFztAe8yEP966VZqsT-U-4V6HPMmlfZgUlB9BqlSKV026-Bz1TRCGq60V7DF_bgjo9qbYLxxkyK41LcNusfOYwRwD8MHeDKIZ1_SQ4HQWSrIW3PpzXnjNimTpFg91BpAzdX2XRxPhfsf6n7-2aRv5yRgcX2nQ01RiDfTo7R1PaKs8JR-ff5p9Dq9n6teC5O6QFjMyoBh9dcaT3P5oZnAK5irKMCtgmefwgaSW46TSkZ-wOFm_gahHqcDhvb4CzHEmpj2nhLSQptIYjRRv-cXJxju0Ts-MrT3uIXtPASrfWk00UV1J9vdwG9_RGibYx4S2Mzer3Fvy_-TIRyKGPfYive0fQVpJSCwYeg1h2IM9UK0YWUQOS5W4TGVyijsIwyLdwrOSTGMRJ7c4ucuUJAjqeDiKFDZw_uks329yFyYG7fE8r-eykJCfeKIIS1Pjf3xyhwsPJMYQkFK8zHyA1_wLnqthr-_VC8hcMtGNJYLYA-zyjs58l1iEBkHh1qgwWiMoVRBL3tPK7lpJfW8TpsJt-guc8-551yOnsXDpCjJuArUgfZ-5W8MKeGacxHzGJOP8GcdUYX4RKgH9IoIVD6JlR9hmB9e4AoWofKSdT-G5uHmw6v5bZC38rY=w447-h447-s-no?authuser=0",
+                description: "Pequeno clampe elástico de mola de ação direta, usado para interromper temporariamente o fluxo em vasos de médio calibre."
+            },
+            {
+                id: 14,
+                name: "Pinça Satinsky",
+                category: "Oclusão Vascular",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczOIwp8ezJ07gAVTMlTcpi-6RjTZp8NvpGUl6mpPLz8RvlOfgYi7HHAIfiKpr1LXWVoxPBKHYJcce3aEMJXgj5IRqDVqZUxjTNMiLetXDAVuN6azHSaw2DZ9F3myeFRDidZk7jvw0gCLM1eeTKZjv9AqGrAIi1_wBpol_8V2ndvVat25vxM0Wo0HWJJ2Qg-QdAjoSp4PY8nGl1-7nQWMi9WeDb6sLT7pcaoh2t_g5SJM_RS6DTYrUn8CKw9cCzOq9AGiM4nS4UFmizqv2uaB_RQqHdVvHKBocv9Kj53WL4Z5qJToHSGcPc-FnA4yj9C5dDS10ll699pq3mWkL-vq5_TxmB5UlOWcDM71oDseWok6QXIL-bpfEygUhloq2ia6lokO15HySbw2c3pv4SnP2Qe-4Xyij4cfCO6TnSOJa_zs2JX5DYHSJjb7cjJm8E-TcpAv_fdMC9YbDmSWhPOHY3J3lPRuozk9mfRumOWI-G-IIl4mpRkzp_cr38Qcv5BTYqF3eF7YZstOc1LW1oiATKI2Qu_8and3n4c6yXzTY2M17efSY8kZyYhrbC2NUFdmwq_0iCBr_S1Me7dXT4MjXu0sLa4e4LJ10H_ELCRB3GHAzaNokZEAOvMKqp7xhDyBsgL52jVw0E89I7WqmmaBY47oLOOy8C52nExNDEnZHywjge9o6YAFyLH2SHczk1eB_xPullTYdwGybE9In597B7XT-9872ONtdic0cCLGnG16QSPedvTF694DiCRsvmiXbchRUgAm1V0RIxJMUJUrPqycKt0s_u4jNB4UcNuaf675_jaqxHlIBHXGdMfFHm6jvtFG0i3JyPoFwPEZxPK3ugnEAIzTJULvzskbfe80piBHNbua9m8yHcZCYT55XTW24e2G6Z7cHtaVNjfpk6r7_HdtrW44xfyw2QJI9degMMc1_USgVYrUwfV8aCKtoBpIHudL0-Ns9t5E54aGPB6gR2EooTXCxHijtXZ4yCIh2TflJOEYTCbLulA2aOnKJ04c-pBM1Bcck5-l=w588-h441-s-no?authuser=0",
+                description: "Clampe vascular atraumático com curvatura especial que permite oclusão parcial da luz de grandes vasos (ex: veia cava)."
+            },
+            {
+                id: 15,
+                name: "Clampe DeBakey",
+                category: "Oclusão Vascular",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczM3dEP-bu4ToP9fCaSOtIB3vyGu5EEp_vb5IlByVjkYuXwpBhlHcIjT9Tn0BLdBZDDiWPdeixlPgl63pWGLmIKoWvp5Okwe5WyJU8V7yNkO4KSqfQ_Wa3sAj3aAd5olyDtbdDXjJx9QxCcdpc3VNrQn6KMCrteaRNWvfqcuklFZ-XQC_diH0cgM8qkYFEHxyo_zu5Xh4qx_ao72e6aeidusJMKqLtQQU22Z7S6q5IBt7P1MI3V0XpCwm4EG6OM7Bvj27_1OU64z4u1C9kYh9OfRITDAqQAGcQkMkJ9ptsxnIh81QvVrjvNqvXpLdbQefusDfHf9Q9bWbwqJThyie_EPoa5w0K_UXABl2WhTmJjF2e2kL8MC02a7ox-qKKbGdYnGR973TxyJfgwv0Lb5L3jr807wNfP2JhNJvKWPSZzzcSuYtqa-AJpq2o_VyHhy6DtOsb8XX_vMjwP_3wy3zYm9w_YS84OV5-NsFVJocyS8iV5oU5hMrMhyrnG3C1Lc-omO_-CtZ8L9Hh4oQ9dgjqc2K5CSCGp6u5kysFKLPdefT_Od8nHmlTQeBPKY3aQjM7FP5smkvwrTqjCq3TrLOzi06uWF-5NiYbWAtzxmj36eMk8G2kjWNNHUFZaL5TfnrqD4U6xVRp5BGe8turyNHbEdQv28ig_Fp_7Sg6KYgq7qlHcNAKArUOfoPkiQzSg7SRbWW_cOJ0CJRuGI6w3cmqbIWhb87vi3Od3XoF2b8T0BBx5Gk46dM7IfFOs4bVPbK8w1bH1w4TENBct98-I7C7NrGIZNeUhNbDEjawraCutMYdx_JyMEvykuczcyp-kUWVCx6w49T531cfnRwqx3N7bjOWCBOhiMLDgvCd6yK5YJ_wfSA64eDAhHQbg_tme5XztFzKr7voGzw0zJtTs1oTOEhPcPQF-PObklYMatz57KC2k3_yu1xgaRnGQlnGyMRA5lpcAJ3BpHQZUfYFao8NdFSodG8YLmMwlGGcR-sQnYmIriAk5ejew47RAsxTevwjfG5lxICDhP=w547-h365-s-no?authuser=0",
+                description: "Instrumento atraumático vascular com denticulado longitudinal fino que evita trauma no endotélio arterial."
+            },
+            {
+                id: 16,
+                name: "Porta-Agulha Mayo-Hegar",
+                category: "Síntese",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczPYZy-AEkEoGbmTNb2p5q9G78gKl376wnyeFtZ4XRlPJcC6xu5UV0JPqTtqaNsU6QYLXnq1nNBQTPSJZUwiWKMSFG6Ud4StEWL2WWTLt-ZMOoG2SyasvJPEQGSgq1Gh5boeh7Erl15NQB1XYuGyhqo-9TzSnoxsEEWq7b_P5CKiqnBYnI2JP-a27Vn8vELJP3St_0rAE2ioZHw8aEoDyYLm-arpmVGhjC-nbYHELq2pRjFnR5aOQmQL7OrTWNm_CM2n1NXT0o4V17391K6XKG_gnZ2IjNDFMk-CW6T89AUzbBIU_ORg3fwEoAUwQmaGdAcFgSF9sbguf7UNOXxluWZhwa87S9XCLxkNPZrT6vAiGJ9vRE9hZVOxJHL1okk2zjl4dQwn36KFQVMd70g5-EiMktLPKYYr9Ms-QyzlLwSczo2UnrHHZG4HUsZXiUQhKOsyk2XYqwf8MwYwxCnl_3pzENr-Tm0EM66nkSG6eHD-Ua_uUK8Ft7rL6UYIJsdntsirQUOAQR2JHJesVIP4HLgBa3XL9uOxTDigF73OhXPRd70PMm0czTwRZ3L5_NUA7h1yd7e598ll9hHCn3gbp7x0Zde1_-S_nf9Oq0VtdE6Wjcoa2khMIiX90e6zfCz_gF2HbWSo_1oX4_ApYtUtl5XSSnPlfQyWg0WBgaEiNL1JFrHsw5wfMh6ViOAooSJqWTCcOvr1ofz1ep_LNvcXzjyR1dD0cEZszpXriXlsKmCJSqwIEvpUJpby2grPcAty58-8XonlGu2RpOvrHL4pW7C_nHWfesgva2-TI9YIfX-b5bm97RppOYgGU3rTJjONuGJYE4IX_HLnqaNXXmOEGqj6u_G13BvngrkDYcWDUiH2XwIDE9-Ve6-_b4mXgdDomnvVfH6xRwdkxhgp0Aggs60-3fjLKmrudt_AItJ1F_Pa-K1L_bOdarfcvjsPpYfSpfoZldGvWqsO7BAVdFuIAAfysXtk0_wO9m3tm3QzGIun4y09mAxupepr0paHgpEhSP6V1wrJIOWp=w447-h447-s-no?authuser=0",
+                description: "Instrumento firme de mordente curto e estriado (muitas vezes com wídia) com cremalheira, para conduzir agulhas cirúrgicas."
+            },
+            {
+                id: 17,
+                name: "Pinça Collin",
+                category: "Preensão de Vísceras",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczOqe2z4h0HVRBp7koH3D2bLFKrlh_MqvRPA-HEnMqEhSFFRi0I06dsxt2-4CjZr8Ybo0PYsAzPRJc28wK58AAkc4uUEkMJKGoK1xMjevIm0lNLRwGYHhenCFfUrUGzUeX1luK4u7641ICECbJ9L4COCD-34ZOClRrdse9ypP43c1LFJHD28IikMyHgKx-Ur1If4banq2E6ZilBuo-HdpmGZm1tFfaikM8mi9VexggCKK9BXxWlwLWTYFZjC7LNbkHx1vby7lGOva_shA3UGNzwaxZzTiODenz1wQGnGtjET-fs5rH73zFyp8Srp94zA9nGWwzzI8zJXsABf6GTb0NIsd9hPzDQpI4-P0_-arm0fCu_1uSbkUJNMyDyZkWcz9w3jZCywv39L2VLB0nkLx-_HnWTxptS6yQ6_ND9wE_5-qHOuS7O1NgTadVKLnE3njIYsnT6LweD1zTAwVPn7mewLZTIuCkn9nhuq8nWej1ancLbZyKNxaUsvfXcObAw3zTBIQAxlFdbOT2_BxXDYG2howlbXJau_pdNHkJuhLeXFd6_5vhytTZ6zci9eTakfr8Y6O8m-p6qgNJuoYN_Rkr11FEbpMlJ2wUni0j0doh1Al2NzTLYQWBfFR6yfIA79DeQGXjsKr6LIP3upq1laeq6fqAdXfpXhn1sOAOPttx1WoniTwO81TBo8nPjx5ltwQLvJT8JLcbxZ5GXPSIVYRxwgbIhFAH7Nu1nGhiz1KxfYr6vbTD1isNHzpNcNMVn_EX1P1drIGiSMqghfRWJopp0qo2JxcfcqFzNXUBp4537pB8wxno3ZDW-zDbN-PF8FWYsXOkLjjafIrT-QF_NJfLICmZbcTbR3qpK03yqRegbbzh7qEiN4tVQNobpbq7lbJqjw4cQbEmWh-BYE7C13J_hjiD4UxBNJ1ei2hYsMp_D6s75GfcQc_YWAGQDQGjGkeTDDPTkagLCew7EAZLtpvFE0ZZ0OeIW6lO01RCTRj42dwFAXKiAUKInmz5GbO9j38qB65Z9qFYsV=w447-h447-s-no?authuser=0",
+                description: "Pinça com extremidade em formato de anel ou coração, fenestrada, para preensão suave de órgãos e tecidos macios."
+            },
+            {
+                id: 18,
+                name: "Pinça Pozzi",
+                category: "Ginecologia",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczM2PU-Vd3Eqaup0S89eFMRJVgR-tsPF0NLfstjC7Ok8cfrkuyt6d0fNG_DQ5ZIvxjoBTKqotO8J6UkiA-4qFLK-REZpegQ7KXz2t4vyk1UzGoXytPkZHnesqtyxlkt0izsqlQtRaoXvUiWnJcVWEVyJl_XdTM32ECplSzc1jZDPgMBDmD6_vHgxtXM23F57OyNq7Xk-ScLfuUh4biaJEnW7a-nZ6OlgxSFMjIiUxg2qs8nj4TmKh--JgZ0KtETs-BzE_ge_Lmdm6lQIj7Y_WGBTgSEOxSoc0V759pq_Oh8g4UqyMmdbD3ciMwSaJZLTJ7Che02T3idBf8Ohgb8qBPoHbNLJFxnHWWekBgrui8i4YiTVvSuW-S3ZgRdNqv_fO4WCnnKYzlJQpPQTEIad4pDTUMN4wF_Bw-rqFg28QbHmfEaCRL7RMQuWeLFlug0GFaMAYpzqq9T-bRpFU5FeNJ7OEVpn4GqsBz1LI_iKaKezG15zT-HpdOyIFGn00FPSEJ8SPjEN2kmTX0icHQYHPtXR5VCwAHaI0U1IoT6QWRXzC9pvLIDPqYKjTqNY6LVNywvX5sXRll31FI2AQTh0KlGKshUnFveGUw5AOQvQXI6AIZXOqw39sgPY4IwRIwWpFk_gv1dxV9MdwBLcfI57RLF-5C1oZF9pOTcVUAaVsXpyVHcNGL8v_JMCO3d0VkqQww30qfoL49kl1RGms078lct6uBa4T_ZIJ4qCgsWj9OknDqA-vvP9v16mPMR3cXMnCHsPtptg7BW5ZOxvxfN5IjfTfmhxNV-JakAkgrzunp9nrKxdKYevBc3ooIi8Hn4_WdA5GSj4AMEdrAcuayp_biePRCu_J0mFRu0VRF0A1cfe19P3T1ozzy250oakH9q5gYXvuoJPn73veM5EuvzCyaArbLjbe8DgCH-4sON85LWDeZ8auJLKfCFOeQurpmGFx0ynTF7qYmHhhxo8DcJvPVWU_-nybbyGeWMqwMyGxuQf9w1WqIu3QCTw_DakSrvD99B_mbdxIiVw=w447-h447-s-no?authuser=0",
+                description: "Pinça de ganchos agudos duplos, utilizada em ginecologia para apreender e tracionar o colo uterino."
+            },
+            {
+                id: 19,
+                name: "Clampe Intestinal (Doyen / Kocher)",
+                category: "Cirurgia Digestiva",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczO9qn-S3olI4whSHva0Xdl5oLjpvkwer7et3Qrz1JxOWdjX9mb_gu_iKwYgJb3aMJF5W3sQ6UIsNBA3HPulGHAeX6_daGPk1-OasbTcHMRMHbBN6duOgJXpMzkRtIqp8L_Tn9dL3k4D_rc7mfCVwU1ko3hW2PwtmYUNjoIGx5GliGJOmaQpdCo88susuh8rWp1jI7ZEFgqe7dN-Svlv6Uv6-cOLHKmkEJy_NX7SNuSfUUQS0iRl1bda0AWg-t__RHpZ9XrXXg6KSZQ7Ek5kANR2li4HWl0nMzaGYj6N8eSXGwGgNXlmeX46w0ASEktYbEs8A_RF0GRRg0_Y7YYXytWtKl-lhSkX6OskQoS0HWWGq1GNuYG8rlZ7OY8L2Bv73NIiAhPNXQtbPYuTy2hSxHLiIRpJvhW0xGdWoGwzZJQqCpQ2Cpkv5gCBdF5FsyF8Y7cZiUKvSJaBfCCWYmwqNotkZ_iRXvwClUAgxrujs6_GuVkKPFG2bcXxsQrKMYr2fWst2SjQ2JC0XGItjWuYhnRi6WgJNRzVs44xvySRud_kvIRVls-gt5MQnsyL0ncJ-djGYN2Mzg2wylcRBXP3ACOeP9S2mmrlweqTbycQ4pBcpMFUtSj5ZLkvx_NN4Ze5MlffITVAGEZ4qNGhPJ2LZdL1hNMRWRF1w8yNWG0EstApQYqvfSVjqKfbh1439PMcVW6P0-yfDCqRiu9_k9RJK7DZpo4O4FLbWt6kH6C-xQSDd2s7TgkNTmavemau8qQ6xUVigyRTassVRTiLXH1yooq1LLsPmHLvXPjkse-coph2XtRBN82MGaeX0ZFDqBN1y1FiMZeg_J6SmdmOCNZYQfdb7hfJiqLu1jtB4Ci3tSnVeGqWFr6yqLsRVmp_DmgfpCaZvZMnMfEAN52N_T8XIPCpirmDV08fYy1io0jFYsepy-TrFsZQA-dieGWy0JkBWpW8qSUQAfIZBJMUyLzqWSUIkJHjn55-vYyVVeruKCxNLou5PCvtChTr_Yu0C46vphiknUIOtW7R=w447-h447-s-no?authuser=0",
+                description: "Clampe de hastes longas e flexíveis para ocluir a luz de alças intestinais sem causar deiscência ou necrose."
+            },
+            {
+                id: 20,
+                name: "Afastador Suprapúbico Judd-Masson",
+                category: "Afastadores",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczPsn8BvoT0iP9WfXPY7nBSQmSMx0nlPoS88JBQyAvTiKMbcsNL-HIN2RZayok64WlaSOYL2Ymyd7C64Za_sBc0dadtEXu-G0dg5fY40m7daZIx8fWyjyRp69FQMcFS3_d3Yp10ssjmMp_JH4st9Nui7rPmU_rWedsIXzAsoIWlShem_warf3LF3qwYLMzT9sP1_MtPF275oQByNqMJTlmJZQGcN2y2i7o9lKHYATt1JTzUgwqGIkcdcL52rVi7gy1_bdWcednlrbH6YpKJe46lbNbirZ-GmMAVvJItXwMIgPTbbjm3OavVQ0NnWPO-XWhRmKNJrueSrycmLjvbvbzSRw-hUdTp6Td0LyHbwiYVbairpxgXUFFVU1MpIQrtTDoLkfEKKT2X6TG7RBPtNkbbkjVChgE6Y8BD2wM7wefvTzNRPXrK3FeNyyPvIW2rO4vfAupCEXh8EQocs6NLxLlEb9a-qaj5u30zkH8ObLJPHgm5lWvzKecNUBfXLDiGPsJg6I65d0bG5Vd3iH_RmFp32dSVhUx05E_T0hbgtVNUE7YPA9FzveN0RNzV-FK4n993pVU9OMnAY9cRQusUI7FR48_SGqOjySGAAn4HMVTtEA_IlsmdW-NSvXFyt4TfiVWXbgQDU18RENHo8Sq10sR1kZQeA7Aio4w6ABwHtyHI6wYAOPzHHyzHh8uXH6r-aIM0MLAonQ6yEWX-t_brRlRtBx8kaGyHndwCrV3ni8xbsAbLqkyuXVEltL9pmiISyr2zfxtK1stkLUiOnzEU6ZJpCESLblM0pIXJXmT6XwjxvvSbp6Dl8fj_oW-hvVMQ6aHDU3Fm9f62vPOdbbOzvQrXbUO-qWJotf-OFHCYui6WUqoEDqm9egJrNSu9JVUZNhMu-TW_cTmaUR_Mp9K8zNIOsvJzq-fzWDkTVjHA832vb-17rQ-MwcDSkHbFX0NaHIPKMZa7KPCtaJ1nUGoKjos9trvDyzI8wQ5k74uID6Ehx-029WyMUfm7aRudKMAU2aXvsF4RI-RbQ=w447-h447-s-no?authuser=0",
+                description: "Afastador estático desenhado para expor a região suprapúbica em cirurgias pélvicas e urológicas."
+            },
+            {
+                id: 21,
+                name: "Afastador Balfour",
+                category: "Afastadores Auto-estáticos",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczMVy_hZZin8pVjZpL67X0sx0EfUpYrhODga31i0DQq0-5tptVe3K9mnEIsxAXeLYxphoHAMpJ-arLwhzluZdCfVV3CTRPSJCo8Mc0EsHneY7Pn98vGW8d_a9bQkElKztK-uvVIXc30ltFZftDvNkT5PFWcjdSyUDlnH50E5VCPbW08Z8UNfzkjAcqMKo07YwUP0gu0COt4HQoXe0-XwP31MUlgM4hChDKXonLT0cS3YE1ptCXYEUGIuIzdqyVgW95K_5wlBLsJNjFCaMIgNsPtiawbohLBX8au1s5TTIwPDeuqBeQfrpVxnEPbcm5JGSb0m20EElTx2DMgMfrFBR_HJ3Lszy9i37K1gWfloolTSPjDKZz2YHb8rsyYuSHUiTEIv9t5uW1SSU3Q312UxNJ2T0fAF6USFOnaF5FngxXRBFuFYhOR4qcT7IMf7o8Z-X9irveMCowAbNLFxx7_UhPGVXnfMPacV8O9j0yDNKZOsNkoPJItzcExCmh_E7x4K9vsQIjNtOcJzwtgWDlyqL5J0UXEGs26gxhXePQ1mP0u-W35vTHvLcoykyg_2bqS9-EqWLCA76ExZ42o6hf8hecfhq40IW7Hw2EzbAam7CFywJQaomk6xYbYRUicwUhdSyTLLkBMe7L4-6NbsUg7Oly3H3weR2VwCnCo1ibQjQg42nNMquTO0yZ4y5A7JfIU94Bc-BWE-53M1E0h-X1p44Cp_WnWaR9JyfGmMwlVo-RBvEKUxXiMq2bB2uFNJnyl_eQH3k2pcmg2XeQqSoAcd4aGJkNqthNerzZvbTjsqwMgsJ1VY7RoI8iHWcmviWR7hxfXndIg42n9SxapZbJSzmDelhwk9c6NAnRBeL9VhmLZC4UqRoMyJydVFErDjpfOO7QqhPP-xHTnTuUa5jZtBZCwcyMnQJ3U1pQwf3j7oBo9JFC_9q4HMFpqsureNtcfUHxWyR8D1fGVcxFEcDmPrNZXBxYk7lBhOCtsnFlJCzND8PCDzQrwmLOsMUFSzyr5PnQstc0KDvsvR=w447-h447-s-no?authuser=0",
+                description: "Afastador abdominal auto-estático com valva supra-púbica vesical móvel, muito utilizado em laparotomias medianas."
+            },
+            {
+                id: 22,
+                name: "Afastador Gosset",
+                category: "Afastadores Auto-estáticos",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczMXx4KGOzQSUKNEKh90ZGUyqBcq7kzAFUuUO3BYyMENpRcNrqxH46Lay8VNKLGAydcrPZ8PavfRVUiDuUPi0mFRp1-peOjWF5as73YCzlMT_Ck3lvSsEn72xs2J9UDKnmq2SpNJLaqq2IpND0BPTQy-uiyUdfB0kxg2Sg9SlkJoCo3f0n__TjIIaKlYFJu7kjFsJX64Q57e-CgxtrX74wPEWIeHpDE5vGmtgHg0B_2iqLB_Uro2PpHgAxVmSaaJCSkb7dHWpbLgjeBpDE_K53WqsEiWxZ-gxsOJJZJNWYisUpM8su8b1Af6Z1izo5A7aSxiMtaq5RgQwbqsViOW0OUa3NNIly8OMtmdvKpE6zS4efNDpwlabMf6SURl6eP30As3xWsIhSrwELvmfgPbnZPnsXtnf8e9qTFQanKjZwlXjneYlnlml4JoiC8J0prGRjnVDwlT70KBV81LhiGy9QxpEeJXjH84zvFrB392N2mbmoE7DzMmrETrAHwKEmZOTv7k7JMi3I7uSE2dbT7I6m5cP-XQcWuUfdkAnHmBDvL143Yt9MBGyNIEX5l8fjAZ384RZDQ9XBDk25FI1T2mAooUZzQluhB4UsXDWd1IMLLGjDfvlsBLRf89apbQ91jL3mYgUm16tlcbYu6RY1OhiRZtrdWfek1ezlvVr4RB9OA7X0guLx6qJF6yvnVPSIWr4Q4TPVYTQDBPDRkVHvk1rEamlxbrEl-nFVlsWMsMiT1RyGaDZOP4HGKX1innqRyRDg2RS8luoIEd4Y6KfirBNf1PLfH7TkxxIj0G6XSsehIqssqaPn_1t_HuEDwiF3DJF9WyJFD7fQfV_f3XTjDpt0MNCJ16nDbQoogzveC_eB4kiX5XI5D_sJLdXXWeFADPsxKDcbqYY1hJZUiG_Y3T_OWsEIJ54QAYdYB8-LJb3SmpqKckNgnqfB5CsgL-OpXTVJk6sZE6cbNaeEXg7PRxNCT5zBxM8l0HG05KtlQKV_QANb9iyN-9emHmTbPwSis2T8cGK987uBEY=w447-h447-s-no?authuser=0",
+                description: "Afastador auto-estático abdominal composto por barra com ranhuras e dois braços paralelos sem valva vesical."
+            },
+            {
+                id: 23,
+                name: "Afastador Finochietto",
+                category: "Afastadores Torácicos",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczMiy7QqZKK-qV1N5DJoDRBw2_RE1UrE-UHdB0Yixkr2zSqS1tLYNFgrniJI2efr6Cbqm2JzmyuafyC8l-swzUOcnReVGLZkv4GbUMW8b-vy9IzSh6JzI5lrhr9RwmsFW7vcXDd63CUACkSuOIbnQ-9u451NiQxVmRcamdEz2Aa6lRSZQrGWEwJ3S3HWykLEny2R04Xj1fpZLQLHzrV3mz3AO5XyDszZnp-lvJL53tjEQjA7jmPPn5ZRQ3HKomzwe8XD5DzIiefdwQcXj23Qg6ain_2KZOAE7-kj4tyNg3_LTLdf_Jo37Lo77Zzb4wGy3DP7fyH3jKzdLwE0q6vbryXBA7xhmxbG2-2IEHhVgaxzV2gwnJ03uv6A0ViwF2QR-uJkmPQ2DviQQj438kKYRUYVBd18_R_iD7xBvSaPEpoSn3vnILTnLc7xgHoeP44ZsejkztxavyyGKOR1_CTSLXJ-z6pQTpa6OWXfPe2AnoyP6w7-q6XaZjAEJQNl5ydiFVaEd2W26YK2zu9YMrfYNkL5wOmK3-LuYQRnnTWKXNWTIOhMbDT-tg4QnqIDMjLt2Baom7QCW_fFLDPHPtVWI-GuO6kmtlphWTrSPVgfPT679834_iXNOfvozYCq9usuqPGynYK8KkVwFDXkfHTUq881UQTsrMJr1TuRNzmstRjZp1OFjubFGi0mT0BezrtW9firJunQvOeIzpiUonhA87_n2oDNxnN7rdCnSLXKBKKa_psjmrtLBVg3FSmXjkgR9B6RaqPukbxDE9yFfbkptMkkpbl9-zit1WBkVjoamYfgXex0KU4dH5xBlMbxzcvefi4RfBD3Sew0DGYwaMyqqKI81rSoGpFVWv5GjvoZirlj9yaANuOVunteiQmpY44BjcDqF7WysoyItKD44vOtcwITk_WNWdK-AoaI1zgzUBx92Tc_QN2rJXcU5zxoZCSBSPYJ_2evUmBfNJAiS-dcsfm_5HnBeXZmVY-y1t0bOS3J_Jwl_KDzbwvHmsjBzWAI4Fid-Ez_i8eO=w447-h447-s-no?authuser=0",
+                description: "Afastador de toracotomia acionado por manivela dentada e cremalheira para afastar costelas com alta força."
+            },
+            {
+                id: 24,
+                name: "Tesoura de Mayo (Reta e Curva)",
+                category: "Diérese",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczNC_0hM9udYJSjraTUcWuaDdFPaOUlxDtdbXhqITwdr4uyLsspZMNiAsVxJ-4F29xKAgpQep2fACXsZJSgpkwg3tNtk1KOQ2p02tYL7TREnilvNOabFfji6rOH4T-h3xQWV6p7ZCyFe_bA8sh5fzjEBWje7_FdQIqtwgHj-N-vQy07w6x58-yGS9huZ3fOtTRVzJx-UwUk1sjYqg9Kl_NIg88Bph-e9Yj7ZcMhDba-NJpk6GR_A6atI2-6T4dYr4PiQ690z6jsqPkUY_KJ_XCwULCFhJAr9DbvNgwPPHjOx7fTiqcMcJyFED6OfhbImmHaz3lVQJLA2ke_sU0XjZ-fYbMKLgbFsz5I-pSj1SlYpu3IbGxMIRXQv6GZQfoPkD4D3zhBUzuxvO_nksNPs_4Yu2cw2iIQNA8l-WEvRk_X8g_Sj_Z8SB-9w-jYjHTULSfBuB78c91F5QDNyDvA4dqpFzQwRKlOY8e7Beq_tqHRQv_ZT2Wk9lGoQPR2ajKbXwcK2B1Iam-71w7JG-4B1qPDfzEycoBIxAKNoKu-EWX5DY5oWBwvaqvKcp29Ol-Wq3E22Cgkj_SBB_CWjAVBFG-V-JxvhJD7eOPkR_xNmMXrIc64RF02cwiI2OqAg9EHAgbguRrK_QXMIN0IgCY5SGRbaj__s7uWtTucSlpFPjb1uNtGPmgcmvEpgTygO5A7xobHAJYD2pe9azJoB8IrxMHfrieR4lbv5Dzx7Cue-SC5F0KO3ubYgT3q1pqiUqeBE0n_qR_GDaKMQ0FMbQBgedqNl37cNPjawfyP6Wr6iZIsG47OLm88F9tfBMyUzyRnP48VidfjItuzQEBpw4d32hedi2PisVLNb9fXD6q9ygrhqepeWGEYYb7xXZud5bVICbmFrTKxkpZDSFozlfmck8SoZ1lJVlu44EYUqMdUTUVftwzG0azyYkT09C-XIFqE0OrHE96DrMvm4QIn22C_Jz9fBy0pGKQRwYTjJU29gaN286coHiuLtpOuZgJharIx-ejagf9vpIHwy=w447-h447-s-no?authuser=0",
+                description: "Tesoura robusta para cortar fios, dreno, compressa e tecidos resistentes (como aponeuroses)."
+            },
+            {
+                id: 25,
+                name: "Tesoura Metzenbaum",
+                category: "Diérese Delicada",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczM4nHoPFOPkPFXjoRe4Nbh5FowBRDd_fWuLGSzeMPECzoqqJmwZInB---9Fr0wdRTUx865bJoVQ73v67evqdO5D0S6HFrFUSyMchMh14AZMEc8SVIGh7tL00llEzzW9cNEox-TeOd2oZ5FTb1b3lMbzayYEJ90bCyuL93rccEFKvt9Js9kPoeoz68bhzsq6CHs6K3qObb8oNKIKozjpS5OAGBlR6S8kCDLbYHeT6Sova_f7FST_ckJNwJdwf1hOFh29Xo6kRcTnDONwboaviZjvOkP4n65W6tU1zjZe_diIynwigvW11TOBRXIgsa7rwee8AF6U79yxsRgbjFBxluDevEt7Ny2qGMIDcGK3-aePboN2MUDcLWsp-pVN3j3Tv0gjie_VdaxxZpANTiUvNGgY7yF_o6r6QqnPk0BZ4XZQTwimwQDV3wUOP9jLhZyz_VVZ6I1tCnAw8BNFRCYKcj6ilYjNw8hC_2USq_-zOMlVIY95WG0wsyDzLPnjOg59giPV_5Y8PhfsW-TnKM3QP34nlkS3R43kcl3lRwGF-HuW44OdPIXC2euaI7IiiEV_23oJiYL7kpONh6xL-6ctKfLun2mS9C4IU-zBtj2SJRJNzi8DCAcHo1gHdcN6fR_WRr6X2EmkF5aGoOBrTv5o6XYEecOOv8F3YUBbgVuFpuK1vnBkyzUHxRgq0fpBTB13a0ZFR3TugCP7KQi5HsDBcIODXL1CEeUAJe-UV92-2lIooNzq6Wjq4dMOrkyobudB1J8cQbJNifDKhiepO_inTqGnBHbNcKH1NbMX0jGJiCUgWymfErtXrOuerID1AMtUi4DRBYF7ef7VIYiBpvEe-ST_Oo6fs917Tvjctbp98P1MRFSkdLOkhwco_ZIE92B8rpzKxCzeEOrUzGjPo_CihSBMUivgMpxW3m9gCFVE5Cp-3qraOcvNlFuIgEipNPkNtIeoV_s2b8yPKSoeGlvCHt3c0bI3XkZyEiMFPYhPG3dI_sueD7dSWqkAauQqj_raBEBsajBpA7dx=w447-h447-s-no?authuser=0",
+                description: "Tesoura de haste longa e lâminas curtas e delicadas, essencial para dissecção fina de tecidos em profundidade."
+            },
+            {
+                id: 26,
+                name: "Pinça Cheron",
+                category: "Antissepsia / Ginecologia",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczM0zSzgmj6h2WI0CT-r5QT_9QTYrTfiidRHW52-WdUY1U33_vw0xoXZ9nKopDh_80J7xNdlY3iBlftOTwurVQV9VvuCPXGBA-NVOCyiaPWGWDlnwfAs3h7ubli4W8Z0iy6nPuCh-B_QodXLAGM2mQ0f1LEMiiMi-BMolD28AS9dp4cdjIABfrARTeAfPSSW_0hiO6YMjK_ZOKcwhAS_ULaPWR6Nu4UY0i5N561km_w5q9xUozpZBsuUWcKzJV1cmjmsKLk2HtCRAC_Q5hU-zSBDqIDjSN94GnYzljpGkjzkTemPe1cAcLEcu1PugXWqrTU6bNhF7ZfolKu2oU9D6fgHbsKq9Zar8j3pSVaiigLyS-fbLUnkopIp_9w_lrEsTq_f_5R6ysQVRvZ2MI5OjGX0pxMF-7Z62dfwVhF6E63-MzY-P8MjyqhEsXeVlqTX5AgtHoJAicsQfq-hoUkG512JNO_kuwduSNOml_XdNpaREei5GkbWW8dOUINUya-8MNVxA1lO15_2g-Br2dHOdGzF088LY7bnrE5LCyFpwBH-EmCFN815f7VTY1su5JpLkcYMH5PdXdy7qg2WEJW6o_J1NRIEjpHbSPc75EOQkIMqttqN1enqd2g6t8JRx4y8xWHiSJr_Se2n9cAcbcJSCJ7MprAwTULhHm_Mnwi_DPlxWgwna1VddQC5SSF77BLf-A0iFQEW0S-o7WfJcS9QCxgtka0kjqayTdDDnZ2l1XCr485KIAYZIUJR0StyC2KPI9mJbV90Whlh3RjNvD0i8ub2PRJIIYNkWbmuqh3kGia5aMK1ZkfvTaQpxuZCjATuQjtJsCld_59HOhl0tBG0pO-gG71ZirU1X_N07bgbxtU0hUlR8n3DNH5uP1lzFJ5lCs2YHpeEenLp0MxCTf5z9W2xIGiRf9Lt5izgTlgg36Sg-5qlHhQJHjPvb0t_0PJXdE7QaubwTFLtGchYROjHg6ND8E_vBLBhppC1OMQGJlYRDqHq4_KCKi44mMLcmf-ulAJEJue7hpxM=w447-h447-s-no?authuser=0",
+                description: "Pinça longa com pontas ovais curvadas, utilizada para limpeza, antissepsia de cavidades e montagem de gazes."
+            },
+            {
+                id: 27,
+                name: "Pinça Pean",
+                category: "Hemostasia",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczNyb4ovi1CW4rjfoTB6QsKwZTY64Nv8v1J8zMqsbLJQFwaOEBDv-whMDMSBoPHVth7j12-UpdoleqzfkyFyTrsXUjyh9gqkz-yq4cqEi9S_Fmd4P7ABZ0khfY1NqtYMuIK656x09k8FT6AyVXqDWQSpD9AG7d7GWo-8rXxANg35nX-jBNI-npDVuDm87OTersiuT-jhyyDhNHn7ZSRDAbY2mP3cnypTU5zOiYiVlgUMVZaITQzppmaLSEtdrQc4I45l2zQb-v3kXGyIwmHHb5XLy_RF95Lyd0kpBFQRFb1w6mJdJ83nZj7F93nQ5p7pLRO-9kidhihkOkOWP23TJ30kgwBm1rghk79Yl8TNNzg21v9nXjZ43C7r5Bgk6X7o-S_wbx1NCLtmtz65KN75Ebz5iZeqUsLsCyHOBrPrCX8sc_vZvsDcndGwa62FGFMQ_rncaTywPGv15I-uH9VSoNBYGeAkYZHVhaeCCLp4L6r3aFunQdOlVJWj_suGWACo1dU8AqP_ScBnqbUbJWD8IRx_KP9xGBUVqCcv-PMGXtMmRxj7VSlOWgrYLJtJ7PyxhDx3qtLU7gjU4oo5jxDUzKBy4TcSUPQY-5zoy2pgKqp2gxu6vyAE5NZtgYoroTXhx8tmAUbjKzOH9icYeFy8WnZJITZeujsj4yRPwfXm2kLf9yanTsNIrw-_Mh47vBu4uESKNqF2YmnsMUivCy7OsSa4GRNcaGjhIds3b4WbP2H0QrGgquNE1zDfQs8ojP9ju1ktgqKDTTbbCe3r-m5XzcrcFC49gpxCEyFJU-g9gA36JKGh7rwnO61fo2Tr14foX0C29auboKFf8BLJSp3ACWJr6VzJJPuXjMSIpqwqeNfq1uhKqOJzLfKsEkR7m1mIV7ATapiwOrxLB2dhaWto8Y729Dkxgz-rSKoYRodqaOJEayC3DWO0xARcXM7ut7Lj5MFQdKTnf8OneXENcDam5l9WnN_nQav_rhj9rZ7gyg29efoY3o4c7fqKDK6hL0SGGSuSgbfxYg_y=w447-h447-s-no?authuser=0",
+                description: "Pinça hemostática forte com dentes ou serrilhados largos, usada na apreensão de tecidos densos e pedículos vasculares. Não confundir com pinça cheron, o que difere é no tamanho da ponta sendo a pean a mais fina."
+            },
+            {
+                id: 28,
+                name: "Pinça Duval / Collin-Duval",
+                category: "Preensão de Pulmão",
+                image: "https://lh3.googleusercontent.com/pw/AP1GczM6siZRtllDqTYZpyGF8A-M2kb9yIe-LV5go_Yu3afZ35F9kxysILccPvHBHjlwawkXazjIq_c7aOV7pyYwfut2Yutjts5cvOp5XjNJQmtSeQncfH1wGIcGFLE0gUUMsEa2ElvZXR1ju_Kq3Ci3MGBJHvIsN55CGZ9OWSVKXxqXdC5pLUbfEuD0SIaqOmtI0Jg3y-DN2hCetH82DawSlSnEoza59ErBFtV3sL_Q-jnrYfLKaVihOdR7kh7SYHjaBU1F7QRhxB7w-1INUkW5-mH5sFkLmkl9LanXB5e9gh5qPAmt3TDeBOQKJm0KMRQRCPWPLqfUru9OjyuwjnobrWZN6SAVIJ9Dvkmh7Sgc3x3TmyJRwUPDDMkGtz5k7JIAfQP6zvMTg0Pa6514GRBYI0bS-FNrGfKli4ux-zmTolZ6riW3nVITwEsncVXBNQq9QJ_B7yxfINOGoUhDBJa6Y59mJxuz1Tybi1mlDbnrQ5VWoMxh1nGZc3y9Wpn6m7D7ksltDQ3LhbwH6vYt-885tnv6Gz_WRZUylB6GubejSTCxwG6b4GJrmCRtgiWDe9tTlCYPxgVzdAwOeLP8T2w1MeLREPCBZV6C1gUIdE6xkfMV9C6T5OFzwASV1uZczGsYQqHiWq7yjUuLgSNH-Hg8hSUtAEUCoi924yJTtyC90tSC9jvVSBj9nWzIfQ2LOlmmp2EcWguGyZNlaHDax5OvAakdREG1x1N02W3krBJCL8egpdYvYL-DRjjZ7vZ56ClFKdsyzYghavuArhW_iNzAkLGpNDnEeGhy8Wk5Jcn74iCuOuT0oKEZPEEK5i5zDseaNcn3d2QdmN6BPpmDiHOya2iht2vbGcuUfqGoa69eODS99OB67ZRan0fp2xETgh3fRn0o7-uVc8HJ7Uh11eTc1duPUCTerQrsrphcz8B_U8DSpx-XAxYW_T2ZQUbXwjSz6UKuM8IqZnK0zdFk_6ajFQCYWSOMoBkmKXwFtXbTBV78XSqWJuWDji1Ov6mOJAAJuY-NVwE66cpM=w461-h433-s-no?authuser=0",
+                description: "Possui extremidade triangular e fenestrada atraumática, usada principalmente para segurar parênquima pulmonar."
+            }
+        ];
+
+        // Carrega dados persistidos no navegador ou padrão
+        let instrumentsData = JSON.parse(localStorage.getItem('medpro_instruments')) || defaultInstruments;
+
+        function saveInstrumentsToStorage() {
+            localStorage.setItem('medpro_instruments', JSON.stringify(instrumentsData));
+        }
+
+        // Renderização da Teoria
+        function renderMaterial(data) {
+            const container = document.getElementById('material-content-container');
+            container.innerHTML = '';
+            if (data.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-slate-400">Nenhum tópico encontrado.</div>`;
+                return;
+            }
+
+            data.forEach((mod) => {
+                const modCard = document.createElement('div');
+                modCard.className = "bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl";
+                
+                let sectionsHtml = mod.sections.map(sec => `
+                    <div class="space-y-3 pt-4 border-t border-slate-800/80 first:border-0 first:pt-0">
+                        <h4 class="text-lg font-bold text-teal-300">${sec.subtitle}</h4>
+                        <div class="text-slate-300 text-sm sm:text-base leading-relaxed space-y-2">${sec.content}</div>
+                    </div>
+                `).join('');
+
+                modCard.innerHTML = `
+                    <h3 class="text-2xl font-extrabold text-white flex items-center space-x-3 pb-2 border-b border-slate-800">
+                        <i class="fa-solid fa-file-lines text-teal-400"></i><span>${mod.title}</span>
+                    </h3>
+                    <div class="space-y-6">
+                        ${sectionsHtml}
+                    </div>
+                `;
+                container.appendChild(modCard);
+            });
+        }
+
+        function filterMaterial() {
+            const query = document.getElementById('material-search').value.toLowerCase();
+            const filtered = materialData.map(mod => {
+                const filteredSections = mod.sections.filter(sec => 
+                    sec.subtitle.toLowerCase().includes(query) || sec.content.toLowerCase().includes(query)
+                );
+                return { ...mod, sections: filteredSections };
+            }).filter(mod => mod.sections.length > 0);
+            renderMaterial(filtered);
+        }
+
+        // Renderização dos Instrumentais
+        function renderInstruments(data) {
+            const grid = document.getElementById('instruments-grid');
+            grid.innerHTML = '';
+            if (data.length === 0) {
+                grid.innerHTML = `<div class="col-span-3 text-center py-12 text-slate-400">Nenhum instrumental encontrado.</div>`;
+                return;
+            }
+
+            data.forEach(inst => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between border border-slate-800 hover:border-teal-500/40 transition-all duration-300";
+                
+                card.innerHTML = `
+                    <div class="p-5 bg-slate-900/90 relative group flex items-center justify-center h-52 border-b border-slate-800">
+                        <img src="${inst.image}" alt="${inst.name}" class="max-h-44 max-w-full object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://placehold.co/400x300/0f172a/38bdf8?text=Instrumental'">
+                        <button onclick="openImageModal(${inst.id})" class="absolute top-3.5 right-3.5 bg-slate-900/90 hover:bg-teal-500 hover:text-slate-950 text-white text-xs font-semibold px-3 py-1.5 rounded-xl border border-slate-700 shadow-lg transition-all flex items-center space-x-1.5">
+                            <i class="fa-solid fa-camera text-xs"></i><span>Mudar Imagem</span>
+                        </button>
+                        <span class="absolute bottom-3.5 left-3.5 bg-teal-500/15 text-teal-300 text-xs font-bold px-3 py-1 rounded-xl border border-teal-500/30">${inst.category}</span>
+                    </div>
+                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-extrabold text-white">${inst.name}</h3>
+                            <p class="text-xs text-slate-300 mt-2 leading-relaxed">${inst.description}</p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800/80 flex justify-between items-center text-xs text-slate-400 font-medium">
+                            <span>ID: #${inst.id}</span>
+                            <span class="text-teal-400"><i class="fa-solid fa-circle-check mr-1"></i>Pronto para Prova</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Atualiza métricas na Dashboard
+            document.getElementById('stat-instruments-count').innerText = instrumentsData.length;
+            document.getElementById('stat-flashcards-count').innerText = instrumentsData.length;
+        }
+
+        function filterInstruments() {
+            const query = document.getElementById('instrument-search').value.toLowerCase();
+            const filtered = instrumentsData.filter(i => 
+                i.name.toLowerCase().includes(query) || 
+                i.category.toLowerCase().includes(query) ||
+                i.description.toLowerCase().includes(query)
+            );
+            renderInstruments(filtered);
+        }
+
+        // Modal de Edição de Imagem
+        let editingInstrumentId = null;
+
+        function openImageModal(id) {
+            editingInstrumentId = id;
+            const inst = instrumentsData.find(i => i.id === id);
+            document.getElementById('modal-instrument-name').innerText = `Editar Imagem: ${inst.name}`;
+            document.getElementById('modal-img-url').value = '';
+            document.getElementById('modal-img-file').value = '';
+            document.getElementById('image-modal').classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+            editingInstrumentId = null;
+        }
+
+        function saveInstrumentImage() {
+            const urlInput = document.getElementById('modal-img-url').value.trim();
+            const fileInput = document.getElementById('modal-img-file');
+
+            const inst = instrumentsData.find(i => i.id === editingInstrumentId);
+            if (!inst) return;
+
+            if (urlInput) {
+                inst.image = urlInput;
+                saveInstrumentsToStorage();
+                renderInstruments(instrumentsData);
+                closeImageModal();
+            } else if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    inst.image = e.target.result;
+                    saveInstrumentsToStorage();
+                    renderInstruments(instrumentsData);
+                    closeImageModal();
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                alert('Por favor, selecione um arquivo de imagem ou insira a URL.');
+            }
+        }
+
+        // Flashcards Teoria
+        const flashcardsData = [
+            { front: "Quais são os quatro tempos cirúrgicos fundamentais?", back: "1) Diérese (divisão de tecidos); 2) Hemostasia (parada de sangramentos); 3) Exposição / Acesso; 4) Síntese (afrontamento e sutura)." },
+            { front: "Qual a diferença entre a Tesoura de Mayo e a Tesoura Metzenbaum?", back: "A de Mayo é robusta, usada para tecidos densos (fáscias e fios). A Metzenbaum é fina e delicada, ideal para dissecção de tecidos nobres." },
+            { front: "O que caracteriza a Zona Branca do Bloco Cirúrgico?", back: "É a sala de operações propriamente dita, de restrição máxima, onde circulam apenas pessoas envolvidas no ato cirúrgico paramentadas com gorro, máscara e capote estéril." },
+            { front: "Para que serve a Pinça Backhaus?", back: "É a pinça de campo, usada para fixar os campos estéreis sobre a pele do paciente ou prender tubos de aspiração." },
+            { front: "Qual a função do Afastador Finochietto?", back: "Afastador costal auto-estático acionado por cremalheira, utilizado para separar as costelas durante toracotomias." },
+            { front: "O que é Diérese e quais seus principais tipos?", back: "É o ato de provocar solução de continuidade nos tecidos. Tipos: incisão (bisturi), secção (tesoura), divulsão (separar fibras) e punção (furar)." },
+            { front: "Qual a diferença entre a pinça Crile e a pinça Kelly?", back: "A Crile possui ranhuras transversais em todo o comprimento do mordente. A Kelly possui ranhuras apenas na metade distal." },
+            { front: "O que é a Hemostasia Preventiva?", back: "Conjunto de manobras para prevenir sangramentos, como clipar vasos que se sabe que serão cortados antes mesmo de seccioná-los." },
+            { front: "Qual a ordem correta para a degermação cirúrgica das mãos?", back: "Unhas, dedos, entre os dedos, mãos, punhos, antebraços e cotovelos, em ambas as faces (ventral e dorsal)." },
+            { front: "Para que serve a Pinça Pozzi?", back: "Pinça ginecológica longa com pontas em gancho agudo na extremidade, utilizada para tração do colo uterino." }
+        ];
+
+        let currentCardIndex = 0;
+
+        function renderFlashcard() {
+            const card = flashcardsData[currentCardIndex];
+            document.getElementById('fc-front').innerText = card.front;
+            document.getElementById('fc-back').innerText = card.back;
+            document.getElementById('fc-counter').innerText = `${currentCardIndex + 1} / ${flashcardsData.length}`;
+            document.getElementById('flashcard-inner').style.transform = 'rotateY(0deg)';
+        }
+
+        function flipCard() {
+            const inner = document.getElementById('flashcard-inner');
+            inner.style.transform = inner.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % flashcardsData.length;
+            renderFlashcard();
+        }
+
+        function prevCard() {
+            currentCardIndex = (currentCardIndex - 1 + flashcardsData.length) % flashcardsData.length;
+            renderFlashcard();
+        }
+
+        // Flashcards Instrumentais
+        let currentInstrumentCardIndex = 0;
+
+        function renderInstrumentFlashcard() {
+            const inst = instrumentsData[currentInstrumentCardIndex];
+            document.getElementById('ifc-category').innerText = inst.category;
+            document.getElementById('ifc-num').innerText = `#${inst.id}`;
+            document.getElementById('ifc-img').src = inst.image;
+            document.getElementById('ifc-back-name').innerText = inst.name;
+            document.getElementById('ifc-back-desc').innerText = inst.description;
+            document.getElementById('ifc-counter').innerText = `${currentInstrumentCardIndex + 1} / ${instrumentsData.length}`;
+            document.getElementById('instrument-fc-inner').style.transform = 'rotateY(0deg)';
+        }
+
+        function flipInstrumentCard() {
+            const inner = document.getElementById('instrument-fc-inner');
+            inner.style.transform = inner.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
+        }
+
+        function nextInstrumentCard() {
+            currentInstrumentCardIndex = (currentInstrumentCardIndex + 1) % instrumentsData.length;
+            renderInstrumentFlashcard();
+        }
+
+        function prevInstrumentCard() {
+            currentInstrumentCardIndex = (currentInstrumentCardIndex - 1 + instrumentsData.length) % instrumentsData.length;
+            renderInstrumentFlashcard();
+        }
+
+        // Modo Jogo / Quiz
+        const quizQuestions = [
+            {
+                question: "Qual tempo operatório consiste em provocar uma solução de continuidade nos tecidos para criar via de acesso?",
+                options: ["Hemostasia", "Diérese", "Síntese", "Exposição"],
+                correct: 1,
+                explanation: "A diérese é o tempo cirúrgico dedicado à divisão, incisão ou secção dos tecidos."
+            },
+            {
+                question: "Qual instrumento é indicado para a fixação de campos estéreis sobre a pele do paciente?",
+                options: ["Pinça Allis", "Pinça Backhaus", "Pinça Kocher", "Pinça Crile"],
+                correct: 1,
+                explanation: "A Pinça Backhaus (pinça de campo) possui pontas curvas e agudas cruzadas para fixação de campos."
+            },
+            {
+                question: "Em qual zona do bloco cirúrgico situa-se a sala de operações propriamente dita, de restrição máxima?",
+                options: ["Zona Negra", "Zona Cinza", "Zona Branca", "Área de Recepção"],
+                correct: 2,
+                explanation: "A Zona Branca é a sala cirúrgica principal, exigindo rigor máximo de paramentação."
+            },
+            {
+                question: "Qual tesoura cirúrgica é mais recomendada para dissecção fina de planos profundos e tecidos delicados?",
+                options: ["Tesoura de Mayo Reta", "Tesoura de Mayo Curva", "Tesoura Metzenbaum", "Tesoura de Esmarch"],
+                correct: 2,
+                explanation: "A Tesoura Metzenbaum é longa e delicada, projetada especificamente para dissecção cirúrgica fina."
+            },
+            {
+                question: "Qual pinça hemostática apresenta ranhuras transversais em todo o comprimento do mordente?",
+                options: ["Pinça Kelly", "Pinça Crile", "Pinça Halstead", "Pinça Adson"],
+                correct: 1,
+                explanation: "A pinça Crile tem ranhuras por todo o mordente, ao contrário da Kelly que possui apenas na metade distal."
+            },
+            {
+                question: "Qual afastador auto-estático abdominal é equipado com valva central vesical para laparotomias?",
+                options: ["Afastador Farabeuf", "Afastador Balfour", "Afastador Finochietto", "Afastador Gosset"],
+                correct: 1,
+                explanation: "O Afastador Balfour é o modelo abdominal com valva vesical central muito utilizado em laparotomias."
+            },
+            {
+                question: "O tempo cirúrgico que visa reunir ou juntar as bordas de uma ferida para orientar a cicatrização chama-se:",
+                options: ["Diérese", "Hemostasia", "Síntese", "Divulsão"],
+                correct: 2,
+                explanation: "A síntese corresponde ao afrontamento e sutura dos tecidos plano por plano."
+            },
+            {
+                question: "Qual instrumento é utilizado para tração do colo uterino em procedimentos ginecológicos?",
+                options: ["Pinça Pozzi", "Pinça Collin", "Pinça Mixter", "Pinça Duval"],
+                correct: 0,
+                explanation: "A Pinça Pozzi possui ganchos agudos na ponta para preensão e tração firme do colo uterino."
+            },
+            {
+                question: "Qual o tempo aproximado da primeira lavagem cirúrgica das mãos com escova e solução degermante no dia?",
+                options: ["1 minuto", "2 minutos", "3 minutos", "5 minutos"],
+                correct: 3,
+                explanation: "A primeira lavagem no dia deve durar em torno de 5 minutos, e as demais no mesmo dia cerca de 3 minutos."
+            },
+            {
+                question: "Para secção do tecido subcutâneo nos tempos operatórios, qual material é preferencialmente empregado?",
+                options: ["Bisturi de lâmina fria", "Eletrocautério (função hemostasia/corte)", "Serra cirúrgica", "Tesoura de Mayo"],
+                correct: 1,
+                explanation: "O subcutâneo é seccionado preferencialmente com eletrocautério, que realiza corte e hemostasia simultânea."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let score = 0;
+        let selectedAnswer = null;
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-teal-500', 'text-slate-950', 'shadow-lg');
+                btn.classList.add('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
+            });
+
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
+                activeBtn.classList.add('bg-teal-500', 'text-slate-950', 'shadow-lg', 'shadow-teal-500/25');
+            }
+
+            if (tabId === 'material') renderMaterial(materialData);
+            if (tabId === 'instruments') renderInstruments(instrumentsData);
+            if (tabId === 'flashcards') renderFlashcard();
+            if (tabId === 'instrument-flashcards') renderInstrumentFlashcard();
+            if (tabId === 'quiz') initQuiz();
+        }
+
+        function initQuiz() {
+            currentQuizIndex = 0;
+            score = 0;
+            document.getElementById('quiz-score').innerText = `${score} pts`;
+            document.getElementById('stat-score').innerText = `${score} pts`;
+            document.getElementById('quiz-complete').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            const q = quizQuestions[currentQuizIndex];
+            document.getElementById('quiz-progress').innerText = `Pergunta ${currentQuizIndex + 1} de ${quizQuestions.length}`;
+            document.getElementById('quiz-question').innerText = q.question;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-2xl text-sm font-semibold text-white transition-all flex items-center justify-between";
+                btn.innerHTML = `<span>${opt}</span><span class="w-7 h-7 rounded-xl border border-slate-700 flex items-center justify-center text-xs font-bold text-slate-400">${String.fromCharCode(65 + idx)}</span>`;
+                btn.onclick = () => selectQuizOption(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('quiz-explanation').classList.add('hidden');
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+            selectedAnswer = null;
+        }
+
+        function selectQuizOption(idx, btnElement) {
+            if (selectedAnswer !== null) return;
+            selectedAnswer = idx;
+            const q = quizQuestions[currentQuizIndex];
+            const options = document.getElementById('quiz-options').children;
+
+            if (idx === q.correct) {
+                btnElement.classList.remove('bg-slate-900', 'border-slate-800');
+                btnElement.classList.add('bg-teal-950/70', 'border-teal-500', 'text-teal-200');
+                score += 10;
+            } else {
+                btnElement.classList.remove('bg-slate-900', 'border-slate-800');
+                btnElement.classList.add('bg-rose-950/70', 'border-rose-500', 'text-rose-200');
+                options[q.correct].classList.remove('bg-slate-900', 'border-slate-800');
+                options[q.correct].classList.add('bg-teal-950/70', 'border-teal-500', 'text-teal-200');
+            }
+
+            document.getElementById('quiz-score').innerText = `${score} pts`;
+            document.getElementById('stat-score').innerText = `${score} pts`;
+
+            const expBox = document.getElementById('quiz-explanation');
+            expBox.className = idx === q.correct 
+                ? "mt-6 p-5 rounded-2xl border bg-teal-950/40 border-teal-500/30 text-teal-200 text-sm leading-relaxed"
+                : "mt-6 p-5 rounded-2xl border bg-rose-950/40 border-rose-500/30 text-rose-200 text-sm leading-relaxed";
+            expBox.innerHTML = `<strong>Explicação:</strong> ${q.explanation}`;
+            expBox.classList.remove('hidden');
+
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizQuestions.length) {
+                loadQuizQuestion();
+            } else {
+                document.getElementById('quiz-container').classList.add('hidden');
+                document.getElementById('quiz-complete').classList.remove('hidden');
+                document.getElementById('quiz-final-msg').innerText = `Você concluiu o simulado com ${score} pontos! Excelente desempenho.`;
+            }
+        }
+
+        function restartQuiz() {
+            initQuiz();
+        }
+
+        window.onload = () => {
+            switchTab('dashboard');
+        };
+    </script>
+</body>
+</html>
